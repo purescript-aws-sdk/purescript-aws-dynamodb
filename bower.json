@@ -1,0 +1,17 @@
+{
+  "name": "purescript-aws-dynamodb",
+  "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/purescript-aws-sdk/purescript-aws-dynamodb.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-aws-request": "0.0.5"
+  }
+}
