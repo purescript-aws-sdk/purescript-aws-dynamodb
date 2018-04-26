@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -68,12 +67,12 @@ instance encodeAttributeUpdates :: Encode AttributeUpdates where encode = generi
 
 -- | <p>AttributeValue can be <code>String</code>, <code>Number</code>, <code>Binary</code>, <code>StringSet</code>, <code>NumberSet</code>, <code>BinarySet</code>.</p>
 newtype AttributeValue = AttributeValue 
-  { "S" :: NullOrUndefined (StringAttributeValue)
-  , "N" :: NullOrUndefined (NumberAttributeValue)
-  , "B" :: NullOrUndefined (BinaryAttributeValue)
-  , "SS" :: NullOrUndefined (StringSetAttributeValue)
-  , "NS" :: NullOrUndefined (NumberSetAttributeValue)
-  , "BS" :: NullOrUndefined (BinarySetAttributeValue)
+  { "S" :: Maybe (StringAttributeValue)
+  , "N" :: Maybe (NumberAttributeValue)
+  , "B" :: Maybe (BinaryAttributeValue)
+  , "SS" :: Maybe (StringSetAttributeValue)
+  , "NS" :: Maybe (NumberSetAttributeValue)
+  , "BS" :: Maybe (BinarySetAttributeValue)
   }
 derive instance newtypeAttributeValue :: Newtype AttributeValue _
 derive instance repGenericAttributeValue :: Generic AttributeValue _
@@ -83,12 +82,12 @@ instance encodeAttributeValue :: Encode AttributeValue where encode = genericEnc
 
 -- | Constructs AttributeValue from required parameters
 newAttributeValue :: AttributeValue
-newAttributeValue  = AttributeValue { "B": (NullOrUndefined Nothing), "BS": (NullOrUndefined Nothing), "N": (NullOrUndefined Nothing), "NS": (NullOrUndefined Nothing), "S": (NullOrUndefined Nothing), "SS": (NullOrUndefined Nothing) }
+newAttributeValue  = AttributeValue { "B": Nothing, "BS": Nothing, "N": Nothing, "NS": Nothing, "S": Nothing, "SS": Nothing }
 
 -- | Constructs AttributeValue's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAttributeValue' :: ( { "S" :: NullOrUndefined (StringAttributeValue) , "N" :: NullOrUndefined (NumberAttributeValue) , "B" :: NullOrUndefined (BinaryAttributeValue) , "SS" :: NullOrUndefined (StringSetAttributeValue) , "NS" :: NullOrUndefined (NumberSetAttributeValue) , "BS" :: NullOrUndefined (BinarySetAttributeValue) } -> {"S" :: NullOrUndefined (StringAttributeValue) , "N" :: NullOrUndefined (NumberAttributeValue) , "B" :: NullOrUndefined (BinaryAttributeValue) , "SS" :: NullOrUndefined (StringSetAttributeValue) , "NS" :: NullOrUndefined (NumberSetAttributeValue) , "BS" :: NullOrUndefined (BinarySetAttributeValue) } ) -> AttributeValue
-newAttributeValue'  customize = (AttributeValue <<< customize) { "B": (NullOrUndefined Nothing), "BS": (NullOrUndefined Nothing), "N": (NullOrUndefined Nothing), "NS": (NullOrUndefined Nothing), "S": (NullOrUndefined Nothing), "SS": (NullOrUndefined Nothing) }
+newAttributeValue' :: ( { "S" :: Maybe (StringAttributeValue) , "N" :: Maybe (NumberAttributeValue) , "B" :: Maybe (BinaryAttributeValue) , "SS" :: Maybe (StringSetAttributeValue) , "NS" :: Maybe (NumberSetAttributeValue) , "BS" :: Maybe (BinarySetAttributeValue) } -> {"S" :: Maybe (StringAttributeValue) , "N" :: Maybe (NumberAttributeValue) , "B" :: Maybe (BinaryAttributeValue) , "SS" :: Maybe (StringSetAttributeValue) , "NS" :: Maybe (NumberSetAttributeValue) , "BS" :: Maybe (BinarySetAttributeValue) } ) -> AttributeValue
+newAttributeValue'  customize = (AttributeValue <<< customize) { "B": Nothing, "BS": Nothing, "N": Nothing, "NS": Nothing, "S": Nothing, "SS": Nothing }
 
 
 
@@ -104,8 +103,8 @@ instance encodeAttributeValueList :: Encode AttributeValueList where encode = ge
 
 -- | <p>Specifies the attribute to update and how to perform the update. Possible values: <code>PUT</code> (default), <code>ADD</code> or <code>DELETE</code>.</p>
 newtype AttributeValueUpdate = AttributeValueUpdate 
-  { "Value" :: NullOrUndefined (AttributeValue)
-  , "Action" :: NullOrUndefined (AttributeAction)
+  { "Value" :: Maybe (AttributeValue)
+  , "Action" :: Maybe (AttributeAction)
   }
 derive instance newtypeAttributeValueUpdate :: Newtype AttributeValueUpdate _
 derive instance repGenericAttributeValueUpdate :: Generic AttributeValueUpdate _
@@ -115,12 +114,12 @@ instance encodeAttributeValueUpdate :: Encode AttributeValueUpdate where encode 
 
 -- | Constructs AttributeValueUpdate from required parameters
 newAttributeValueUpdate :: AttributeValueUpdate
-newAttributeValueUpdate  = AttributeValueUpdate { "Action": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newAttributeValueUpdate  = AttributeValueUpdate { "Action": Nothing, "Value": Nothing }
 
 -- | Constructs AttributeValueUpdate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAttributeValueUpdate' :: ( { "Value" :: NullOrUndefined (AttributeValue) , "Action" :: NullOrUndefined (AttributeAction) } -> {"Value" :: NullOrUndefined (AttributeValue) , "Action" :: NullOrUndefined (AttributeAction) } ) -> AttributeValueUpdate
-newAttributeValueUpdate'  customize = (AttributeValueUpdate <<< customize) { "Action": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newAttributeValueUpdate' :: ( { "Value" :: Maybe (AttributeValue) , "Action" :: Maybe (AttributeAction) } -> {"Value" :: Maybe (AttributeValue) , "Action" :: Maybe (AttributeAction) } ) -> AttributeValueUpdate
+newAttributeValueUpdate'  customize = (AttributeValueUpdate <<< customize) { "Action": Nothing, "Value": Nothing }
 
 
 
@@ -145,8 +144,8 @@ newBatchGetItemInput' _RequestItems customize = (BatchGetItemInput <<< customize
 
 
 newtype BatchGetItemOutput = BatchGetItemOutput 
-  { "Responses" :: NullOrUndefined (BatchGetResponseMap)
-  , "UnprocessedKeys" :: NullOrUndefined (BatchGetRequestMap)
+  { "Responses" :: Maybe (BatchGetResponseMap)
+  , "UnprocessedKeys" :: Maybe (BatchGetRequestMap)
   }
 derive instance newtypeBatchGetItemOutput :: Newtype BatchGetItemOutput _
 derive instance repGenericBatchGetItemOutput :: Generic BatchGetItemOutput _
@@ -156,12 +155,12 @@ instance encodeBatchGetItemOutput :: Encode BatchGetItemOutput where encode = ge
 
 -- | Constructs BatchGetItemOutput from required parameters
 newBatchGetItemOutput :: BatchGetItemOutput
-newBatchGetItemOutput  = BatchGetItemOutput { "Responses": (NullOrUndefined Nothing), "UnprocessedKeys": (NullOrUndefined Nothing) }
+newBatchGetItemOutput  = BatchGetItemOutput { "Responses": Nothing, "UnprocessedKeys": Nothing }
 
 -- | Constructs BatchGetItemOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchGetItemOutput' :: ( { "Responses" :: NullOrUndefined (BatchGetResponseMap) , "UnprocessedKeys" :: NullOrUndefined (BatchGetRequestMap) } -> {"Responses" :: NullOrUndefined (BatchGetResponseMap) , "UnprocessedKeys" :: NullOrUndefined (BatchGetRequestMap) } ) -> BatchGetItemOutput
-newBatchGetItemOutput'  customize = (BatchGetItemOutput <<< customize) { "Responses": (NullOrUndefined Nothing), "UnprocessedKeys": (NullOrUndefined Nothing) }
+newBatchGetItemOutput' :: ( { "Responses" :: Maybe (BatchGetResponseMap) , "UnprocessedKeys" :: Maybe (BatchGetRequestMap) } -> {"Responses" :: Maybe (BatchGetResponseMap) , "UnprocessedKeys" :: Maybe (BatchGetRequestMap) } ) -> BatchGetItemOutput
+newBatchGetItemOutput'  customize = (BatchGetItemOutput <<< customize) { "Responses": Nothing, "UnprocessedKeys": Nothing }
 
 
 
@@ -187,8 +186,8 @@ instance encodeBatchGetResponseMap :: Encode BatchGetResponseMap where encode = 
 
 -- | <p>The item attributes from a response in a specific table, along with the read resources consumed on the table during the request.</p>
 newtype BatchResponse = BatchResponse 
-  { "Items" :: NullOrUndefined (ItemList)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Items" :: Maybe (ItemList)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeBatchResponse :: Newtype BatchResponse _
 derive instance repGenericBatchResponse :: Generic BatchResponse _
@@ -198,12 +197,12 @@ instance encodeBatchResponse :: Encode BatchResponse where encode = genericEncod
 
 -- | Constructs BatchResponse from required parameters
 newBatchResponse :: BatchResponse
-newBatchResponse  = BatchResponse { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Items": (NullOrUndefined Nothing) }
+newBatchResponse  = BatchResponse { "ConsumedCapacityUnits": Nothing, "Items": Nothing }
 
 -- | Constructs BatchResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchResponse' :: ( { "Items" :: NullOrUndefined (ItemList) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Items" :: NullOrUndefined (ItemList) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> BatchResponse
-newBatchResponse'  customize = (BatchResponse <<< customize) { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Items": (NullOrUndefined Nothing) }
+newBatchResponse' :: ( { "Items" :: Maybe (ItemList) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Items" :: Maybe (ItemList) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> BatchResponse
+newBatchResponse'  customize = (BatchResponse <<< customize) { "ConsumedCapacityUnits": Nothing, "Items": Nothing }
 
 
 
@@ -229,8 +228,8 @@ newBatchWriteItemInput' _RequestItems customize = (BatchWriteItemInput <<< custo
 
 -- | <p>A container for <code>BatchWriteItem</code> response</p>
 newtype BatchWriteItemOutput = BatchWriteItemOutput 
-  { "Responses" :: NullOrUndefined (BatchWriteResponseMap)
-  , "UnprocessedItems" :: NullOrUndefined (BatchWriteItemRequestMap)
+  { "Responses" :: Maybe (BatchWriteResponseMap)
+  , "UnprocessedItems" :: Maybe (BatchWriteItemRequestMap)
   }
 derive instance newtypeBatchWriteItemOutput :: Newtype BatchWriteItemOutput _
 derive instance repGenericBatchWriteItemOutput :: Generic BatchWriteItemOutput _
@@ -240,12 +239,12 @@ instance encodeBatchWriteItemOutput :: Encode BatchWriteItemOutput where encode 
 
 -- | Constructs BatchWriteItemOutput from required parameters
 newBatchWriteItemOutput :: BatchWriteItemOutput
-newBatchWriteItemOutput  = BatchWriteItemOutput { "Responses": (NullOrUndefined Nothing), "UnprocessedItems": (NullOrUndefined Nothing) }
+newBatchWriteItemOutput  = BatchWriteItemOutput { "Responses": Nothing, "UnprocessedItems": Nothing }
 
 -- | Constructs BatchWriteItemOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchWriteItemOutput' :: ( { "Responses" :: NullOrUndefined (BatchWriteResponseMap) , "UnprocessedItems" :: NullOrUndefined (BatchWriteItemRequestMap) } -> {"Responses" :: NullOrUndefined (BatchWriteResponseMap) , "UnprocessedItems" :: NullOrUndefined (BatchWriteItemRequestMap) } ) -> BatchWriteItemOutput
-newBatchWriteItemOutput'  customize = (BatchWriteItemOutput <<< customize) { "Responses": (NullOrUndefined Nothing), "UnprocessedItems": (NullOrUndefined Nothing) }
+newBatchWriteItemOutput' :: ( { "Responses" :: Maybe (BatchWriteResponseMap) , "UnprocessedItems" :: Maybe (BatchWriteItemRequestMap) } -> {"Responses" :: Maybe (BatchWriteResponseMap) , "UnprocessedItems" :: Maybe (BatchWriteItemRequestMap) } ) -> BatchWriteItemOutput
+newBatchWriteItemOutput'  customize = (BatchWriteItemOutput <<< customize) { "Responses": Nothing, "UnprocessedItems": Nothing }
 
 
 
@@ -260,7 +259,7 @@ instance encodeBatchWriteItemRequestMap :: Encode BatchWriteItemRequestMap where
 
 
 newtype BatchWriteResponse = BatchWriteResponse 
-  { "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeBatchWriteResponse :: Newtype BatchWriteResponse _
 derive instance repGenericBatchWriteResponse :: Generic BatchWriteResponse _
@@ -270,12 +269,12 @@ instance encodeBatchWriteResponse :: Encode BatchWriteResponse where encode = ge
 
 -- | Constructs BatchWriteResponse from required parameters
 newBatchWriteResponse :: BatchWriteResponse
-newBatchWriteResponse  = BatchWriteResponse { "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newBatchWriteResponse  = BatchWriteResponse { "ConsumedCapacityUnits": Nothing }
 
 -- | Constructs BatchWriteResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBatchWriteResponse' :: ( { "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> BatchWriteResponse
-newBatchWriteResponse'  customize = (BatchWriteResponse <<< customize) { "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newBatchWriteResponse' :: ( { "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> BatchWriteResponse
+newBatchWriteResponse'  customize = (BatchWriteResponse <<< customize) { "ConsumedCapacityUnits": Nothing }
 
 
 
@@ -326,7 +325,7 @@ instance encodeComparisonOperator :: Encode ComparisonOperator where encode = ge
 
 
 newtype Condition = Condition 
-  { "AttributeValueList" :: NullOrUndefined (AttributeValueList)
+  { "AttributeValueList" :: Maybe (AttributeValueList)
   , "ComparisonOperator" :: (ComparisonOperator)
   }
 derive instance newtypeCondition :: Newtype Condition _
@@ -337,18 +336,18 @@ instance encodeCondition :: Encode Condition where encode = genericEncode option
 
 -- | Constructs Condition from required parameters
 newCondition :: ComparisonOperator -> Condition
-newCondition _ComparisonOperator = Condition { "ComparisonOperator": _ComparisonOperator, "AttributeValueList": (NullOrUndefined Nothing) }
+newCondition _ComparisonOperator = Condition { "ComparisonOperator": _ComparisonOperator, "AttributeValueList": Nothing }
 
 -- | Constructs Condition's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCondition' :: ComparisonOperator -> ( { "AttributeValueList" :: NullOrUndefined (AttributeValueList) , "ComparisonOperator" :: (ComparisonOperator) } -> {"AttributeValueList" :: NullOrUndefined (AttributeValueList) , "ComparisonOperator" :: (ComparisonOperator) } ) -> Condition
-newCondition' _ComparisonOperator customize = (Condition <<< customize) { "ComparisonOperator": _ComparisonOperator, "AttributeValueList": (NullOrUndefined Nothing) }
+newCondition' :: ComparisonOperator -> ( { "AttributeValueList" :: Maybe (AttributeValueList) , "ComparisonOperator" :: (ComparisonOperator) } -> {"AttributeValueList" :: Maybe (AttributeValueList) , "ComparisonOperator" :: (ComparisonOperator) } ) -> Condition
+newCondition' _ComparisonOperator customize = (Condition <<< customize) { "ComparisonOperator": _ComparisonOperator, "AttributeValueList": Nothing }
 
 
 
 -- | <p>This exception is thrown when an expected value does not match what was found in the system.</p>
 newtype ConditionalCheckFailedException = ConditionalCheckFailedException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeConditionalCheckFailedException :: Newtype ConditionalCheckFailedException _
 derive instance repGenericConditionalCheckFailedException :: Generic ConditionalCheckFailedException _
@@ -358,12 +357,12 @@ instance encodeConditionalCheckFailedException :: Encode ConditionalCheckFailedE
 
 -- | Constructs ConditionalCheckFailedException from required parameters
 newConditionalCheckFailedException :: ConditionalCheckFailedException
-newConditionalCheckFailedException  = ConditionalCheckFailedException { "message": (NullOrUndefined Nothing) }
+newConditionalCheckFailedException  = ConditionalCheckFailedException { "message": Nothing }
 
 -- | Constructs ConditionalCheckFailedException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConditionalCheckFailedException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ConditionalCheckFailedException
-newConditionalCheckFailedException'  customize = (ConditionalCheckFailedException <<< customize) { "message": (NullOrUndefined Nothing) }
+newConditionalCheckFailedException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ConditionalCheckFailedException
+newConditionalCheckFailedException'  customize = (ConditionalCheckFailedException <<< customize) { "message": Nothing }
 
 
 
@@ -410,7 +409,7 @@ newCreateTableInput' _KeySchema _ProvisionedThroughput _TableName customize = (C
 
 
 newtype CreateTableOutput = CreateTableOutput 
-  { "TableDescription" :: NullOrUndefined (TableDescription)
+  { "TableDescription" :: Maybe (TableDescription)
   }
 derive instance newtypeCreateTableOutput :: Newtype CreateTableOutput _
 derive instance repGenericCreateTableOutput :: Generic CreateTableOutput _
@@ -420,12 +419,12 @@ instance encodeCreateTableOutput :: Encode CreateTableOutput where encode = gene
 
 -- | Constructs CreateTableOutput from required parameters
 newCreateTableOutput :: CreateTableOutput
-newCreateTableOutput  = CreateTableOutput { "TableDescription": (NullOrUndefined Nothing) }
+newCreateTableOutput  = CreateTableOutput { "TableDescription": Nothing }
 
 -- | Constructs CreateTableOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateTableOutput' :: ( { "TableDescription" :: NullOrUndefined (TableDescription) } -> {"TableDescription" :: NullOrUndefined (TableDescription) } ) -> CreateTableOutput
-newCreateTableOutput'  customize = (CreateTableOutput <<< customize) { "TableDescription": (NullOrUndefined Nothing) }
+newCreateTableOutput' :: ( { "TableDescription" :: Maybe (TableDescription) } -> {"TableDescription" :: Maybe (TableDescription) } ) -> CreateTableOutput
+newCreateTableOutput'  customize = (CreateTableOutput <<< customize) { "TableDescription": Nothing }
 
 
 
@@ -441,8 +440,8 @@ instance encodeDate :: Encode Date where encode = genericEncode options
 newtype DeleteItemInput = DeleteItemInput 
   { "TableName" :: (TableName)
   , "Key" :: (Key)
-  , "Expected" :: NullOrUndefined (ExpectedAttributeMap)
-  , "ReturnValues" :: NullOrUndefined (ReturnValue)
+  , "Expected" :: Maybe (ExpectedAttributeMap)
+  , "ReturnValues" :: Maybe (ReturnValue)
   }
 derive instance newtypeDeleteItemInput :: Newtype DeleteItemInput _
 derive instance repGenericDeleteItemInput :: Generic DeleteItemInput _
@@ -452,18 +451,18 @@ instance encodeDeleteItemInput :: Encode DeleteItemInput where encode = genericE
 
 -- | Constructs DeleteItemInput from required parameters
 newDeleteItemInput :: Key -> TableName -> DeleteItemInput
-newDeleteItemInput _Key _TableName = DeleteItemInput { "Key": _Key, "TableName": _TableName, "Expected": (NullOrUndefined Nothing), "ReturnValues": (NullOrUndefined Nothing) }
+newDeleteItemInput _Key _TableName = DeleteItemInput { "Key": _Key, "TableName": _TableName, "Expected": Nothing, "ReturnValues": Nothing }
 
 -- | Constructs DeleteItemInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteItemInput' :: Key -> TableName -> ( { "TableName" :: (TableName) , "Key" :: (Key) , "Expected" :: NullOrUndefined (ExpectedAttributeMap) , "ReturnValues" :: NullOrUndefined (ReturnValue) } -> {"TableName" :: (TableName) , "Key" :: (Key) , "Expected" :: NullOrUndefined (ExpectedAttributeMap) , "ReturnValues" :: NullOrUndefined (ReturnValue) } ) -> DeleteItemInput
-newDeleteItemInput' _Key _TableName customize = (DeleteItemInput <<< customize) { "Key": _Key, "TableName": _TableName, "Expected": (NullOrUndefined Nothing), "ReturnValues": (NullOrUndefined Nothing) }
+newDeleteItemInput' :: Key -> TableName -> ( { "TableName" :: (TableName) , "Key" :: (Key) , "Expected" :: Maybe (ExpectedAttributeMap) , "ReturnValues" :: Maybe (ReturnValue) } -> {"TableName" :: (TableName) , "Key" :: (Key) , "Expected" :: Maybe (ExpectedAttributeMap) , "ReturnValues" :: Maybe (ReturnValue) } ) -> DeleteItemInput
+newDeleteItemInput' _Key _TableName customize = (DeleteItemInput <<< customize) { "Key": _Key, "TableName": _TableName, "Expected": Nothing, "ReturnValues": Nothing }
 
 
 
 newtype DeleteItemOutput = DeleteItemOutput 
-  { "Attributes" :: NullOrUndefined (AttributeMap)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Attributes" :: Maybe (AttributeMap)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeDeleteItemOutput :: Newtype DeleteItemOutput _
 derive instance repGenericDeleteItemOutput :: Generic DeleteItemOutput _
@@ -473,12 +472,12 @@ instance encodeDeleteItemOutput :: Encode DeleteItemOutput where encode = generi
 
 -- | Constructs DeleteItemOutput from required parameters
 newDeleteItemOutput :: DeleteItemOutput
-newDeleteItemOutput  = DeleteItemOutput { "Attributes": (NullOrUndefined Nothing), "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newDeleteItemOutput  = DeleteItemOutput { "Attributes": Nothing, "ConsumedCapacityUnits": Nothing }
 
 -- | Constructs DeleteItemOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteItemOutput' :: ( { "Attributes" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Attributes" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> DeleteItemOutput
-newDeleteItemOutput'  customize = (DeleteItemOutput <<< customize) { "Attributes": (NullOrUndefined Nothing), "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newDeleteItemOutput' :: ( { "Attributes" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Attributes" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> DeleteItemOutput
+newDeleteItemOutput'  customize = (DeleteItemOutput <<< customize) { "Attributes": Nothing, "ConsumedCapacityUnits": Nothing }
 
 
 
@@ -524,7 +523,7 @@ newDeleteTableInput' _TableName customize = (DeleteTableInput <<< customize) { "
 
 
 newtype DeleteTableOutput = DeleteTableOutput 
-  { "TableDescription" :: NullOrUndefined (TableDescription)
+  { "TableDescription" :: Maybe (TableDescription)
   }
 derive instance newtypeDeleteTableOutput :: Newtype DeleteTableOutput _
 derive instance repGenericDeleteTableOutput :: Generic DeleteTableOutput _
@@ -534,12 +533,12 @@ instance encodeDeleteTableOutput :: Encode DeleteTableOutput where encode = gene
 
 -- | Constructs DeleteTableOutput from required parameters
 newDeleteTableOutput :: DeleteTableOutput
-newDeleteTableOutput  = DeleteTableOutput { "TableDescription": (NullOrUndefined Nothing) }
+newDeleteTableOutput  = DeleteTableOutput { "TableDescription": Nothing }
 
 -- | Constructs DeleteTableOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDeleteTableOutput' :: ( { "TableDescription" :: NullOrUndefined (TableDescription) } -> {"TableDescription" :: NullOrUndefined (TableDescription) } ) -> DeleteTableOutput
-newDeleteTableOutput'  customize = (DeleteTableOutput <<< customize) { "TableDescription": (NullOrUndefined Nothing) }
+newDeleteTableOutput' :: ( { "TableDescription" :: Maybe (TableDescription) } -> {"TableDescription" :: Maybe (TableDescription) } ) -> DeleteTableOutput
+newDeleteTableOutput'  customize = (DeleteTableOutput <<< customize) { "TableDescription": Nothing }
 
 
 
@@ -564,7 +563,7 @@ newDescribeTableInput' _TableName customize = (DescribeTableInput <<< customize)
 
 
 newtype DescribeTableOutput = DescribeTableOutput 
-  { "Table" :: NullOrUndefined (TableDescription)
+  { "Table" :: Maybe (TableDescription)
   }
 derive instance newtypeDescribeTableOutput :: Newtype DescribeTableOutput _
 derive instance repGenericDescribeTableOutput :: Generic DescribeTableOutput _
@@ -574,12 +573,12 @@ instance encodeDescribeTableOutput :: Encode DescribeTableOutput where encode = 
 
 -- | Constructs DescribeTableOutput from required parameters
 newDescribeTableOutput :: DescribeTableOutput
-newDescribeTableOutput  = DescribeTableOutput { "Table": (NullOrUndefined Nothing) }
+newDescribeTableOutput  = DescribeTableOutput { "Table": Nothing }
 
 -- | Constructs DescribeTableOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeTableOutput' :: ( { "Table" :: NullOrUndefined (TableDescription) } -> {"Table" :: NullOrUndefined (TableDescription) } ) -> DescribeTableOutput
-newDescribeTableOutput'  customize = (DescribeTableOutput <<< customize) { "Table": (NullOrUndefined Nothing) }
+newDescribeTableOutput' :: ( { "Table" :: Maybe (TableDescription) } -> {"Table" :: Maybe (TableDescription) } ) -> DescribeTableOutput
+newDescribeTableOutput'  customize = (DescribeTableOutput <<< customize) { "Table": Nothing }
 
 
 
@@ -604,8 +603,8 @@ instance encodeExpectedAttributeMap :: Encode ExpectedAttributeMap where encode 
 
 -- | <p>Allows you to provide an attribute name, and whether or not Amazon DynamoDB should check to see if the attribute value already exists; or if the attribute value exists and has a particular value before changing it.</p>
 newtype ExpectedAttributeValue = ExpectedAttributeValue 
-  { "Value" :: NullOrUndefined (AttributeValue)
-  , "Exists" :: NullOrUndefined (BooleanObject)
+  { "Value" :: Maybe (AttributeValue)
+  , "Exists" :: Maybe (BooleanObject)
   }
 derive instance newtypeExpectedAttributeValue :: Newtype ExpectedAttributeValue _
 derive instance repGenericExpectedAttributeValue :: Generic ExpectedAttributeValue _
@@ -615,12 +614,12 @@ instance encodeExpectedAttributeValue :: Encode ExpectedAttributeValue where enc
 
 -- | Constructs ExpectedAttributeValue from required parameters
 newExpectedAttributeValue :: ExpectedAttributeValue
-newExpectedAttributeValue  = ExpectedAttributeValue { "Exists": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newExpectedAttributeValue  = ExpectedAttributeValue { "Exists": Nothing, "Value": Nothing }
 
 -- | Constructs ExpectedAttributeValue's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newExpectedAttributeValue' :: ( { "Value" :: NullOrUndefined (AttributeValue) , "Exists" :: NullOrUndefined (BooleanObject) } -> {"Value" :: NullOrUndefined (AttributeValue) , "Exists" :: NullOrUndefined (BooleanObject) } ) -> ExpectedAttributeValue
-newExpectedAttributeValue'  customize = (ExpectedAttributeValue <<< customize) { "Exists": (NullOrUndefined Nothing), "Value": (NullOrUndefined Nothing) }
+newExpectedAttributeValue' :: ( { "Value" :: Maybe (AttributeValue) , "Exists" :: Maybe (BooleanObject) } -> {"Value" :: Maybe (AttributeValue) , "Exists" :: Maybe (BooleanObject) } ) -> ExpectedAttributeValue
+newExpectedAttributeValue'  customize = (ExpectedAttributeValue <<< customize) { "Exists": Nothing, "Value": Nothing }
 
 
 
@@ -636,8 +635,8 @@ instance encodeFilterConditionMap :: Encode FilterConditionMap where encode = ge
 newtype GetItemInput = GetItemInput 
   { "TableName" :: (TableName)
   , "Key" :: (Key)
-  , "AttributesToGet" :: NullOrUndefined (AttributeNameList)
-  , "ConsistentRead" :: NullOrUndefined (ConsistentRead)
+  , "AttributesToGet" :: Maybe (AttributeNameList)
+  , "ConsistentRead" :: Maybe (ConsistentRead)
   }
 derive instance newtypeGetItemInput :: Newtype GetItemInput _
 derive instance repGenericGetItemInput :: Generic GetItemInput _
@@ -647,18 +646,18 @@ instance encodeGetItemInput :: Encode GetItemInput where encode = genericEncode 
 
 -- | Constructs GetItemInput from required parameters
 newGetItemInput :: Key -> TableName -> GetItemInput
-newGetItemInput _Key _TableName = GetItemInput { "Key": _Key, "TableName": _TableName, "AttributesToGet": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing) }
+newGetItemInput _Key _TableName = GetItemInput { "Key": _Key, "TableName": _TableName, "AttributesToGet": Nothing, "ConsistentRead": Nothing }
 
 -- | Constructs GetItemInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetItemInput' :: Key -> TableName -> ( { "TableName" :: (TableName) , "Key" :: (Key) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "ConsistentRead" :: NullOrUndefined (ConsistentRead) } -> {"TableName" :: (TableName) , "Key" :: (Key) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "ConsistentRead" :: NullOrUndefined (ConsistentRead) } ) -> GetItemInput
-newGetItemInput' _Key _TableName customize = (GetItemInput <<< customize) { "Key": _Key, "TableName": _TableName, "AttributesToGet": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing) }
+newGetItemInput' :: Key -> TableName -> ( { "TableName" :: (TableName) , "Key" :: (Key) , "AttributesToGet" :: Maybe (AttributeNameList) , "ConsistentRead" :: Maybe (ConsistentRead) } -> {"TableName" :: (TableName) , "Key" :: (Key) , "AttributesToGet" :: Maybe (AttributeNameList) , "ConsistentRead" :: Maybe (ConsistentRead) } ) -> GetItemInput
+newGetItemInput' _Key _TableName customize = (GetItemInput <<< customize) { "Key": _Key, "TableName": _TableName, "AttributesToGet": Nothing, "ConsistentRead": Nothing }
 
 
 
 newtype GetItemOutput = GetItemOutput 
-  { "Item" :: NullOrUndefined (AttributeMap)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Item" :: Maybe (AttributeMap)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeGetItemOutput :: Newtype GetItemOutput _
 derive instance repGenericGetItemOutput :: Generic GetItemOutput _
@@ -668,18 +667,18 @@ instance encodeGetItemOutput :: Encode GetItemOutput where encode = genericEncod
 
 -- | Constructs GetItemOutput from required parameters
 newGetItemOutput :: GetItemOutput
-newGetItemOutput  = GetItemOutput { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Item": (NullOrUndefined Nothing) }
+newGetItemOutput  = GetItemOutput { "ConsumedCapacityUnits": Nothing, "Item": Nothing }
 
 -- | Constructs GetItemOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetItemOutput' :: ( { "Item" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Item" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> GetItemOutput
-newGetItemOutput'  customize = (GetItemOutput <<< customize) { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Item": (NullOrUndefined Nothing) }
+newGetItemOutput' :: ( { "Item" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Item" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> GetItemOutput
+newGetItemOutput'  customize = (GetItemOutput <<< customize) { "ConsumedCapacityUnits": Nothing, "Item": Nothing }
 
 
 
 -- | <p>This exception is thrown when the service has a problem when trying to process the request.</p>
 newtype InternalServerError = InternalServerError 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeInternalServerError :: Newtype InternalServerError _
 derive instance repGenericInternalServerError :: Generic InternalServerError _
@@ -689,12 +688,12 @@ instance encodeInternalServerError :: Encode InternalServerError where encode = 
 
 -- | Constructs InternalServerError from required parameters
 newInternalServerError :: InternalServerError
-newInternalServerError  = InternalServerError { "message": (NullOrUndefined Nothing) }
+newInternalServerError  = InternalServerError { "message": Nothing }
 
 -- | Constructs InternalServerError's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInternalServerError' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> InternalServerError
-newInternalServerError'  customize = (InternalServerError <<< customize) { "message": (NullOrUndefined Nothing) }
+newInternalServerError' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> InternalServerError
+newInternalServerError'  customize = (InternalServerError <<< customize) { "message": Nothing }
 
 
 
@@ -710,7 +709,7 @@ instance encodeItemList :: Encode ItemList where encode = genericEncode options
 -- | <p>The primary key that uniquely identifies each item in a table. A primary key can be a one attribute (hash) primary key or a two attribute (hash-and-range) primary key.</p>
 newtype Key = Key 
   { "HashKeyElement" :: (AttributeValue)
-  , "RangeKeyElement" :: NullOrUndefined (AttributeValue)
+  , "RangeKeyElement" :: Maybe (AttributeValue)
   }
 derive instance newtypeKey :: Newtype Key _
 derive instance repGenericKey :: Generic Key _
@@ -720,12 +719,12 @@ instance encodeKey :: Encode Key where encode = genericEncode options
 
 -- | Constructs Key from required parameters
 newKey :: AttributeValue -> Key
-newKey _HashKeyElement = Key { "HashKeyElement": _HashKeyElement, "RangeKeyElement": (NullOrUndefined Nothing) }
+newKey _HashKeyElement = Key { "HashKeyElement": _HashKeyElement, "RangeKeyElement": Nothing }
 
 -- | Constructs Key's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKey' :: AttributeValue -> ( { "HashKeyElement" :: (AttributeValue) , "RangeKeyElement" :: NullOrUndefined (AttributeValue) } -> {"HashKeyElement" :: (AttributeValue) , "RangeKeyElement" :: NullOrUndefined (AttributeValue) } ) -> Key
-newKey' _HashKeyElement customize = (Key <<< customize) { "HashKeyElement": _HashKeyElement, "RangeKeyElement": (NullOrUndefined Nothing) }
+newKey' :: AttributeValue -> ( { "HashKeyElement" :: (AttributeValue) , "RangeKeyElement" :: Maybe (AttributeValue) } -> {"HashKeyElement" :: (AttributeValue) , "RangeKeyElement" :: Maybe (AttributeValue) } ) -> Key
+newKey' _HashKeyElement customize = (Key <<< customize) { "HashKeyElement": _HashKeyElement, "RangeKeyElement": Nothing }
 
 
 
@@ -741,7 +740,7 @@ instance encodeKeyList :: Encode KeyList where encode = genericEncode options
 -- | <p>The KeySchema identifies the primary key as a one attribute primary key (hash) or a composite two attribute (hash-and-range) primary key. Single attribute primary keys have one index value: a <code>HashKeyElement</code>. A composite hash-and-range primary key contains two attribute values: a <code>HashKeyElement</code> and a <code>RangeKeyElement</code>.</p>
 newtype KeySchema = KeySchema 
   { "HashKeyElement" :: (KeySchemaElement)
-  , "RangeKeyElement" :: NullOrUndefined (KeySchemaElement)
+  , "RangeKeyElement" :: Maybe (KeySchemaElement)
   }
 derive instance newtypeKeySchema :: Newtype KeySchema _
 derive instance repGenericKeySchema :: Generic KeySchema _
@@ -751,12 +750,12 @@ instance encodeKeySchema :: Encode KeySchema where encode = genericEncode option
 
 -- | Constructs KeySchema from required parameters
 newKeySchema :: KeySchemaElement -> KeySchema
-newKeySchema _HashKeyElement = KeySchema { "HashKeyElement": _HashKeyElement, "RangeKeyElement": (NullOrUndefined Nothing) }
+newKeySchema _HashKeyElement = KeySchema { "HashKeyElement": _HashKeyElement, "RangeKeyElement": Nothing }
 
 -- | Constructs KeySchema's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKeySchema' :: KeySchemaElement -> ( { "HashKeyElement" :: (KeySchemaElement) , "RangeKeyElement" :: NullOrUndefined (KeySchemaElement) } -> {"HashKeyElement" :: (KeySchemaElement) , "RangeKeyElement" :: NullOrUndefined (KeySchemaElement) } ) -> KeySchema
-newKeySchema' _HashKeyElement customize = (KeySchema <<< customize) { "HashKeyElement": _HashKeyElement, "RangeKeyElement": (NullOrUndefined Nothing) }
+newKeySchema' :: KeySchemaElement -> ( { "HashKeyElement" :: (KeySchemaElement) , "RangeKeyElement" :: Maybe (KeySchemaElement) } -> {"HashKeyElement" :: (KeySchemaElement) , "RangeKeyElement" :: Maybe (KeySchemaElement) } ) -> KeySchema
+newKeySchema' _HashKeyElement customize = (KeySchema <<< customize) { "HashKeyElement": _HashKeyElement, "RangeKeyElement": Nothing }
 
 
 
@@ -793,8 +792,8 @@ newKeySchemaElement' _AttributeName _AttributeType customize = (KeySchemaElement
 
 newtype KeysAndAttributes = KeysAndAttributes 
   { "Keys" :: (KeyList)
-  , "AttributesToGet" :: NullOrUndefined (AttributeNameList)
-  , "ConsistentRead" :: NullOrUndefined (ConsistentRead)
+  , "AttributesToGet" :: Maybe (AttributeNameList)
+  , "ConsistentRead" :: Maybe (ConsistentRead)
   }
 derive instance newtypeKeysAndAttributes :: Newtype KeysAndAttributes _
 derive instance repGenericKeysAndAttributes :: Generic KeysAndAttributes _
@@ -804,18 +803,18 @@ instance encodeKeysAndAttributes :: Encode KeysAndAttributes where encode = gene
 
 -- | Constructs KeysAndAttributes from required parameters
 newKeysAndAttributes :: KeyList -> KeysAndAttributes
-newKeysAndAttributes _Keys = KeysAndAttributes { "Keys": _Keys, "AttributesToGet": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing) }
+newKeysAndAttributes _Keys = KeysAndAttributes { "Keys": _Keys, "AttributesToGet": Nothing, "ConsistentRead": Nothing }
 
 -- | Constructs KeysAndAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newKeysAndAttributes' :: KeyList -> ( { "Keys" :: (KeyList) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "ConsistentRead" :: NullOrUndefined (ConsistentRead) } -> {"Keys" :: (KeyList) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "ConsistentRead" :: NullOrUndefined (ConsistentRead) } ) -> KeysAndAttributes
-newKeysAndAttributes' _Keys customize = (KeysAndAttributes <<< customize) { "Keys": _Keys, "AttributesToGet": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing) }
+newKeysAndAttributes' :: KeyList -> ( { "Keys" :: (KeyList) , "AttributesToGet" :: Maybe (AttributeNameList) , "ConsistentRead" :: Maybe (ConsistentRead) } -> {"Keys" :: (KeyList) , "AttributesToGet" :: Maybe (AttributeNameList) , "ConsistentRead" :: Maybe (ConsistentRead) } ) -> KeysAndAttributes
+newKeysAndAttributes' _Keys customize = (KeysAndAttributes <<< customize) { "Keys": _Keys, "AttributesToGet": Nothing, "ConsistentRead": Nothing }
 
 
 
 -- | <p>This exception is thrown when the subscriber exceeded the limits on the number of objects or operations.</p>
 newtype LimitExceededException = LimitExceededException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 derive instance repGenericLimitExceededException :: Generic LimitExceededException _
@@ -825,18 +824,18 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 -- | Constructs LimitExceededException from required parameters
 newLimitExceededException :: LimitExceededException
-newLimitExceededException  = LimitExceededException { "message": (NullOrUndefined Nothing) }
+newLimitExceededException  = LimitExceededException { "message": Nothing }
 
 -- | Constructs LimitExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLimitExceededException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> LimitExceededException
-newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newLimitExceededException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> LimitExceededException
+newLimitExceededException'  customize = (LimitExceededException <<< customize) { "message": Nothing }
 
 
 
 newtype ListTablesInput = ListTablesInput 
-  { "ExclusiveStartTableName" :: NullOrUndefined (TableName)
-  , "Limit" :: NullOrUndefined (ListTablesInputLimit)
+  { "ExclusiveStartTableName" :: Maybe (TableName)
+  , "Limit" :: Maybe (ListTablesInputLimit)
   }
 derive instance newtypeListTablesInput :: Newtype ListTablesInput _
 derive instance repGenericListTablesInput :: Generic ListTablesInput _
@@ -846,12 +845,12 @@ instance encodeListTablesInput :: Encode ListTablesInput where encode = genericE
 
 -- | Constructs ListTablesInput from required parameters
 newListTablesInput :: ListTablesInput
-newListTablesInput  = ListTablesInput { "ExclusiveStartTableName": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newListTablesInput  = ListTablesInput { "ExclusiveStartTableName": Nothing, "Limit": Nothing }
 
 -- | Constructs ListTablesInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTablesInput' :: ( { "ExclusiveStartTableName" :: NullOrUndefined (TableName) , "Limit" :: NullOrUndefined (ListTablesInputLimit) } -> {"ExclusiveStartTableName" :: NullOrUndefined (TableName) , "Limit" :: NullOrUndefined (ListTablesInputLimit) } ) -> ListTablesInput
-newListTablesInput'  customize = (ListTablesInput <<< customize) { "ExclusiveStartTableName": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing) }
+newListTablesInput' :: ( { "ExclusiveStartTableName" :: Maybe (TableName) , "Limit" :: Maybe (ListTablesInputLimit) } -> {"ExclusiveStartTableName" :: Maybe (TableName) , "Limit" :: Maybe (ListTablesInputLimit) } ) -> ListTablesInput
+newListTablesInput'  customize = (ListTablesInput <<< customize) { "ExclusiveStartTableName": Nothing, "Limit": Nothing }
 
 
 
@@ -866,8 +865,8 @@ instance encodeListTablesInputLimit :: Encode ListTablesInputLimit where encode 
 
 
 newtype ListTablesOutput = ListTablesOutput 
-  { "TableNames" :: NullOrUndefined (TableNameList)
-  , "LastEvaluatedTableName" :: NullOrUndefined (TableName)
+  { "TableNames" :: Maybe (TableNameList)
+  , "LastEvaluatedTableName" :: Maybe (TableName)
   }
 derive instance newtypeListTablesOutput :: Newtype ListTablesOutput _
 derive instance repGenericListTablesOutput :: Generic ListTablesOutput _
@@ -877,12 +876,12 @@ instance encodeListTablesOutput :: Encode ListTablesOutput where encode = generi
 
 -- | Constructs ListTablesOutput from required parameters
 newListTablesOutput :: ListTablesOutput
-newListTablesOutput  = ListTablesOutput { "LastEvaluatedTableName": (NullOrUndefined Nothing), "TableNames": (NullOrUndefined Nothing) }
+newListTablesOutput  = ListTablesOutput { "LastEvaluatedTableName": Nothing, "TableNames": Nothing }
 
 -- | Constructs ListTablesOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTablesOutput' :: ( { "TableNames" :: NullOrUndefined (TableNameList) , "LastEvaluatedTableName" :: NullOrUndefined (TableName) } -> {"TableNames" :: NullOrUndefined (TableNameList) , "LastEvaluatedTableName" :: NullOrUndefined (TableName) } ) -> ListTablesOutput
-newListTablesOutput'  customize = (ListTablesOutput <<< customize) { "LastEvaluatedTableName": (NullOrUndefined Nothing), "TableNames": (NullOrUndefined Nothing) }
+newListTablesOutput' :: ( { "TableNames" :: Maybe (TableNameList) , "LastEvaluatedTableName" :: Maybe (TableName) } -> {"TableNames" :: Maybe (TableNameList) , "LastEvaluatedTableName" :: Maybe (TableName) } ) -> ListTablesOutput
+newListTablesOutput'  customize = (ListTablesOutput <<< customize) { "LastEvaluatedTableName": Nothing, "TableNames": Nothing }
 
 
 
@@ -945,11 +944,11 @@ newProvisionedThroughput' _ReadCapacityUnits _WriteCapacityUnits customize = (Pr
 
 
 newtype ProvisionedThroughputDescription = ProvisionedThroughputDescription 
-  { "LastIncreaseDateTime" :: NullOrUndefined (Date)
-  , "LastDecreaseDateTime" :: NullOrUndefined (Date)
-  , "NumberOfDecreasesToday" :: NullOrUndefined (PositiveLongObject)
-  , "ReadCapacityUnits" :: NullOrUndefined (PositiveLongObject)
-  , "WriteCapacityUnits" :: NullOrUndefined (PositiveLongObject)
+  { "LastIncreaseDateTime" :: Maybe (Date)
+  , "LastDecreaseDateTime" :: Maybe (Date)
+  , "NumberOfDecreasesToday" :: Maybe (PositiveLongObject)
+  , "ReadCapacityUnits" :: Maybe (PositiveLongObject)
+  , "WriteCapacityUnits" :: Maybe (PositiveLongObject)
   }
 derive instance newtypeProvisionedThroughputDescription :: Newtype ProvisionedThroughputDescription _
 derive instance repGenericProvisionedThroughputDescription :: Generic ProvisionedThroughputDescription _
@@ -959,18 +958,18 @@ instance encodeProvisionedThroughputDescription :: Encode ProvisionedThroughputD
 
 -- | Constructs ProvisionedThroughputDescription from required parameters
 newProvisionedThroughputDescription :: ProvisionedThroughputDescription
-newProvisionedThroughputDescription  = ProvisionedThroughputDescription { "LastDecreaseDateTime": (NullOrUndefined Nothing), "LastIncreaseDateTime": (NullOrUndefined Nothing), "NumberOfDecreasesToday": (NullOrUndefined Nothing), "ReadCapacityUnits": (NullOrUndefined Nothing), "WriteCapacityUnits": (NullOrUndefined Nothing) }
+newProvisionedThroughputDescription  = ProvisionedThroughputDescription { "LastDecreaseDateTime": Nothing, "LastIncreaseDateTime": Nothing, "NumberOfDecreasesToday": Nothing, "ReadCapacityUnits": Nothing, "WriteCapacityUnits": Nothing }
 
 -- | Constructs ProvisionedThroughputDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newProvisionedThroughputDescription' :: ( { "LastIncreaseDateTime" :: NullOrUndefined (Date) , "LastDecreaseDateTime" :: NullOrUndefined (Date) , "NumberOfDecreasesToday" :: NullOrUndefined (PositiveLongObject) , "ReadCapacityUnits" :: NullOrUndefined (PositiveLongObject) , "WriteCapacityUnits" :: NullOrUndefined (PositiveLongObject) } -> {"LastIncreaseDateTime" :: NullOrUndefined (Date) , "LastDecreaseDateTime" :: NullOrUndefined (Date) , "NumberOfDecreasesToday" :: NullOrUndefined (PositiveLongObject) , "ReadCapacityUnits" :: NullOrUndefined (PositiveLongObject) , "WriteCapacityUnits" :: NullOrUndefined (PositiveLongObject) } ) -> ProvisionedThroughputDescription
-newProvisionedThroughputDescription'  customize = (ProvisionedThroughputDescription <<< customize) { "LastDecreaseDateTime": (NullOrUndefined Nothing), "LastIncreaseDateTime": (NullOrUndefined Nothing), "NumberOfDecreasesToday": (NullOrUndefined Nothing), "ReadCapacityUnits": (NullOrUndefined Nothing), "WriteCapacityUnits": (NullOrUndefined Nothing) }
+newProvisionedThroughputDescription' :: ( { "LastIncreaseDateTime" :: Maybe (Date) , "LastDecreaseDateTime" :: Maybe (Date) , "NumberOfDecreasesToday" :: Maybe (PositiveLongObject) , "ReadCapacityUnits" :: Maybe (PositiveLongObject) , "WriteCapacityUnits" :: Maybe (PositiveLongObject) } -> {"LastIncreaseDateTime" :: Maybe (Date) , "LastDecreaseDateTime" :: Maybe (Date) , "NumberOfDecreasesToday" :: Maybe (PositiveLongObject) , "ReadCapacityUnits" :: Maybe (PositiveLongObject) , "WriteCapacityUnits" :: Maybe (PositiveLongObject) } ) -> ProvisionedThroughputDescription
+newProvisionedThroughputDescription'  customize = (ProvisionedThroughputDescription <<< customize) { "LastDecreaseDateTime": Nothing, "LastIncreaseDateTime": Nothing, "NumberOfDecreasesToday": Nothing, "ReadCapacityUnits": Nothing, "WriteCapacityUnits": Nothing }
 
 
 
 -- | <p>This exception is thrown when the level of provisioned throughput defined for the table is exceeded.</p>
 newtype ProvisionedThroughputExceededException = ProvisionedThroughputExceededException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeProvisionedThroughputExceededException :: Newtype ProvisionedThroughputExceededException _
 derive instance repGenericProvisionedThroughputExceededException :: Generic ProvisionedThroughputExceededException _
@@ -980,20 +979,20 @@ instance encodeProvisionedThroughputExceededException :: Encode ProvisionedThrou
 
 -- | Constructs ProvisionedThroughputExceededException from required parameters
 newProvisionedThroughputExceededException :: ProvisionedThroughputExceededException
-newProvisionedThroughputExceededException  = ProvisionedThroughputExceededException { "message": (NullOrUndefined Nothing) }
+newProvisionedThroughputExceededException  = ProvisionedThroughputExceededException { "message": Nothing }
 
 -- | Constructs ProvisionedThroughputExceededException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newProvisionedThroughputExceededException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ProvisionedThroughputExceededException
-newProvisionedThroughputExceededException'  customize = (ProvisionedThroughputExceededException <<< customize) { "message": (NullOrUndefined Nothing) }
+newProvisionedThroughputExceededException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ProvisionedThroughputExceededException
+newProvisionedThroughputExceededException'  customize = (ProvisionedThroughputExceededException <<< customize) { "message": Nothing }
 
 
 
 newtype PutItemInput = PutItemInput 
   { "TableName" :: (TableName)
   , "Item" :: (PutItemInputAttributeMap)
-  , "Expected" :: NullOrUndefined (ExpectedAttributeMap)
-  , "ReturnValues" :: NullOrUndefined (ReturnValue)
+  , "Expected" :: Maybe (ExpectedAttributeMap)
+  , "ReturnValues" :: Maybe (ReturnValue)
   }
 derive instance newtypePutItemInput :: Newtype PutItemInput _
 derive instance repGenericPutItemInput :: Generic PutItemInput _
@@ -1003,12 +1002,12 @@ instance encodePutItemInput :: Encode PutItemInput where encode = genericEncode 
 
 -- | Constructs PutItemInput from required parameters
 newPutItemInput :: PutItemInputAttributeMap -> TableName -> PutItemInput
-newPutItemInput _Item _TableName = PutItemInput { "Item": _Item, "TableName": _TableName, "Expected": (NullOrUndefined Nothing), "ReturnValues": (NullOrUndefined Nothing) }
+newPutItemInput _Item _TableName = PutItemInput { "Item": _Item, "TableName": _TableName, "Expected": Nothing, "ReturnValues": Nothing }
 
 -- | Constructs PutItemInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutItemInput' :: PutItemInputAttributeMap -> TableName -> ( { "TableName" :: (TableName) , "Item" :: (PutItemInputAttributeMap) , "Expected" :: NullOrUndefined (ExpectedAttributeMap) , "ReturnValues" :: NullOrUndefined (ReturnValue) } -> {"TableName" :: (TableName) , "Item" :: (PutItemInputAttributeMap) , "Expected" :: NullOrUndefined (ExpectedAttributeMap) , "ReturnValues" :: NullOrUndefined (ReturnValue) } ) -> PutItemInput
-newPutItemInput' _Item _TableName customize = (PutItemInput <<< customize) { "Item": _Item, "TableName": _TableName, "Expected": (NullOrUndefined Nothing), "ReturnValues": (NullOrUndefined Nothing) }
+newPutItemInput' :: PutItemInputAttributeMap -> TableName -> ( { "TableName" :: (TableName) , "Item" :: (PutItemInputAttributeMap) , "Expected" :: Maybe (ExpectedAttributeMap) , "ReturnValues" :: Maybe (ReturnValue) } -> {"TableName" :: (TableName) , "Item" :: (PutItemInputAttributeMap) , "Expected" :: Maybe (ExpectedAttributeMap) , "ReturnValues" :: Maybe (ReturnValue) } ) -> PutItemInput
+newPutItemInput' _Item _TableName customize = (PutItemInput <<< customize) { "Item": _Item, "TableName": _TableName, "Expected": Nothing, "ReturnValues": Nothing }
 
 
 
@@ -1023,8 +1022,8 @@ instance encodePutItemInputAttributeMap :: Encode PutItemInputAttributeMap where
 
 
 newtype PutItemOutput = PutItemOutput 
-  { "Attributes" :: NullOrUndefined (AttributeMap)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Attributes" :: Maybe (AttributeMap)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypePutItemOutput :: Newtype PutItemOutput _
 derive instance repGenericPutItemOutput :: Generic PutItemOutput _
@@ -1034,12 +1033,12 @@ instance encodePutItemOutput :: Encode PutItemOutput where encode = genericEncod
 
 -- | Constructs PutItemOutput from required parameters
 newPutItemOutput :: PutItemOutput
-newPutItemOutput  = PutItemOutput { "Attributes": (NullOrUndefined Nothing), "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newPutItemOutput  = PutItemOutput { "Attributes": Nothing, "ConsumedCapacityUnits": Nothing }
 
 -- | Constructs PutItemOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPutItemOutput' :: ( { "Attributes" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Attributes" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> PutItemOutput
-newPutItemOutput'  customize = (PutItemOutput <<< customize) { "Attributes": (NullOrUndefined Nothing), "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newPutItemOutput' :: ( { "Attributes" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Attributes" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> PutItemOutput
+newPutItemOutput'  customize = (PutItemOutput <<< customize) { "Attributes": Nothing, "ConsumedCapacityUnits": Nothing }
 
 
 
@@ -1066,14 +1065,14 @@ newPutRequest' _Item customize = (PutRequest <<< customize) { "Item": _Item }
 
 newtype QueryInput = QueryInput 
   { "TableName" :: (TableName)
-  , "AttributesToGet" :: NullOrUndefined (AttributeNameList)
-  , "Limit" :: NullOrUndefined (PositiveIntegerObject)
-  , "ConsistentRead" :: NullOrUndefined (ConsistentRead)
-  , "Count" :: NullOrUndefined (BooleanObject)
+  , "AttributesToGet" :: Maybe (AttributeNameList)
+  , "Limit" :: Maybe (PositiveIntegerObject)
+  , "ConsistentRead" :: Maybe (ConsistentRead)
+  , "Count" :: Maybe (BooleanObject)
   , "HashKeyValue" :: (AttributeValue)
-  , "RangeKeyCondition" :: NullOrUndefined (Condition)
-  , "ScanIndexForward" :: NullOrUndefined (BooleanObject)
-  , "ExclusiveStartKey" :: NullOrUndefined (Key)
+  , "RangeKeyCondition" :: Maybe (Condition)
+  , "ScanIndexForward" :: Maybe (BooleanObject)
+  , "ExclusiveStartKey" :: Maybe (Key)
   }
 derive instance newtypeQueryInput :: Newtype QueryInput _
 derive instance repGenericQueryInput :: Generic QueryInput _
@@ -1083,20 +1082,20 @@ instance encodeQueryInput :: Encode QueryInput where encode = genericEncode opti
 
 -- | Constructs QueryInput from required parameters
 newQueryInput :: AttributeValue -> TableName -> QueryInput
-newQueryInput _HashKeyValue _TableName = QueryInput { "HashKeyValue": _HashKeyValue, "TableName": _TableName, "AttributesToGet": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "ExclusiveStartKey": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "RangeKeyCondition": (NullOrUndefined Nothing), "ScanIndexForward": (NullOrUndefined Nothing) }
+newQueryInput _HashKeyValue _TableName = QueryInput { "HashKeyValue": _HashKeyValue, "TableName": _TableName, "AttributesToGet": Nothing, "ConsistentRead": Nothing, "Count": Nothing, "ExclusiveStartKey": Nothing, "Limit": Nothing, "RangeKeyCondition": Nothing, "ScanIndexForward": Nothing }
 
 -- | Constructs QueryInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newQueryInput' :: AttributeValue -> TableName -> ( { "TableName" :: (TableName) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "Limit" :: NullOrUndefined (PositiveIntegerObject) , "ConsistentRead" :: NullOrUndefined (ConsistentRead) , "Count" :: NullOrUndefined (BooleanObject) , "HashKeyValue" :: (AttributeValue) , "RangeKeyCondition" :: NullOrUndefined (Condition) , "ScanIndexForward" :: NullOrUndefined (BooleanObject) , "ExclusiveStartKey" :: NullOrUndefined (Key) } -> {"TableName" :: (TableName) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "Limit" :: NullOrUndefined (PositiveIntegerObject) , "ConsistentRead" :: NullOrUndefined (ConsistentRead) , "Count" :: NullOrUndefined (BooleanObject) , "HashKeyValue" :: (AttributeValue) , "RangeKeyCondition" :: NullOrUndefined (Condition) , "ScanIndexForward" :: NullOrUndefined (BooleanObject) , "ExclusiveStartKey" :: NullOrUndefined (Key) } ) -> QueryInput
-newQueryInput' _HashKeyValue _TableName customize = (QueryInput <<< customize) { "HashKeyValue": _HashKeyValue, "TableName": _TableName, "AttributesToGet": (NullOrUndefined Nothing), "ConsistentRead": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "ExclusiveStartKey": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "RangeKeyCondition": (NullOrUndefined Nothing), "ScanIndexForward": (NullOrUndefined Nothing) }
+newQueryInput' :: AttributeValue -> TableName -> ( { "TableName" :: (TableName) , "AttributesToGet" :: Maybe (AttributeNameList) , "Limit" :: Maybe (PositiveIntegerObject) , "ConsistentRead" :: Maybe (ConsistentRead) , "Count" :: Maybe (BooleanObject) , "HashKeyValue" :: (AttributeValue) , "RangeKeyCondition" :: Maybe (Condition) , "ScanIndexForward" :: Maybe (BooleanObject) , "ExclusiveStartKey" :: Maybe (Key) } -> {"TableName" :: (TableName) , "AttributesToGet" :: Maybe (AttributeNameList) , "Limit" :: Maybe (PositiveIntegerObject) , "ConsistentRead" :: Maybe (ConsistentRead) , "Count" :: Maybe (BooleanObject) , "HashKeyValue" :: (AttributeValue) , "RangeKeyCondition" :: Maybe (Condition) , "ScanIndexForward" :: Maybe (BooleanObject) , "ExclusiveStartKey" :: Maybe (Key) } ) -> QueryInput
+newQueryInput' _HashKeyValue _TableName customize = (QueryInput <<< customize) { "HashKeyValue": _HashKeyValue, "TableName": _TableName, "AttributesToGet": Nothing, "ConsistentRead": Nothing, "Count": Nothing, "ExclusiveStartKey": Nothing, "Limit": Nothing, "RangeKeyCondition": Nothing, "ScanIndexForward": Nothing }
 
 
 
 newtype QueryOutput = QueryOutput 
-  { "Items" :: NullOrUndefined (ItemList)
-  , "Count" :: NullOrUndefined (Int)
-  , "LastEvaluatedKey" :: NullOrUndefined (Key)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Items" :: Maybe (ItemList)
+  , "Count" :: Maybe (Int)
+  , "LastEvaluatedKey" :: Maybe (Key)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeQueryOutput :: Newtype QueryOutput _
 derive instance repGenericQueryOutput :: Generic QueryOutput _
@@ -1106,18 +1105,18 @@ instance encodeQueryOutput :: Encode QueryOutput where encode = genericEncode op
 
 -- | Constructs QueryOutput from required parameters
 newQueryOutput :: QueryOutput
-newQueryOutput  = QueryOutput { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "Items": (NullOrUndefined Nothing), "LastEvaluatedKey": (NullOrUndefined Nothing) }
+newQueryOutput  = QueryOutput { "ConsumedCapacityUnits": Nothing, "Count": Nothing, "Items": Nothing, "LastEvaluatedKey": Nothing }
 
 -- | Constructs QueryOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newQueryOutput' :: ( { "Items" :: NullOrUndefined (ItemList) , "Count" :: NullOrUndefined (Int) , "LastEvaluatedKey" :: NullOrUndefined (Key) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Items" :: NullOrUndefined (ItemList) , "Count" :: NullOrUndefined (Int) , "LastEvaluatedKey" :: NullOrUndefined (Key) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> QueryOutput
-newQueryOutput'  customize = (QueryOutput <<< customize) { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "Items": (NullOrUndefined Nothing), "LastEvaluatedKey": (NullOrUndefined Nothing) }
+newQueryOutput' :: ( { "Items" :: Maybe (ItemList) , "Count" :: Maybe (Int) , "LastEvaluatedKey" :: Maybe (Key) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Items" :: Maybe (ItemList) , "Count" :: Maybe (Int) , "LastEvaluatedKey" :: Maybe (Key) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> QueryOutput
+newQueryOutput'  customize = (QueryOutput <<< customize) { "ConsumedCapacityUnits": Nothing, "Count": Nothing, "Items": Nothing, "LastEvaluatedKey": Nothing }
 
 
 
 -- | <p>This exception is thrown when the resource which is being attempted to be changed is in use.</p>
 newtype ResourceInUseException = ResourceInUseException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 derive instance repGenericResourceInUseException :: Generic ResourceInUseException _
@@ -1127,18 +1126,18 @@ instance encodeResourceInUseException :: Encode ResourceInUseException where enc
 
 -- | Constructs ResourceInUseException from required parameters
 newResourceInUseException :: ResourceInUseException
-newResourceInUseException  = ResourceInUseException { "message": (NullOrUndefined Nothing) }
+newResourceInUseException  = ResourceInUseException { "message": Nothing }
 
 -- | Constructs ResourceInUseException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceInUseException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceInUseException
-newResourceInUseException'  customize = (ResourceInUseException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceInUseException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceInUseException
+newResourceInUseException'  customize = (ResourceInUseException <<< customize) { "message": Nothing }
 
 
 
 -- | <p>This exception is thrown when the resource which is being attempted to be changed is in use.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
-  { "message" :: NullOrUndefined (ErrorMessage)
+  { "message" :: Maybe (ErrorMessage)
   }
 derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 derive instance repGenericResourceNotFoundException :: Generic ResourceNotFoundException _
@@ -1148,12 +1147,12 @@ instance encodeResourceNotFoundException :: Encode ResourceNotFoundException whe
 
 -- | Constructs ResourceNotFoundException from required parameters
 newResourceNotFoundException :: ResourceNotFoundException
-newResourceNotFoundException  = ResourceNotFoundException { "message": (NullOrUndefined Nothing) }
+newResourceNotFoundException  = ResourceNotFoundException { "message": Nothing }
 
 -- | Constructs ResourceNotFoundException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceNotFoundException' :: ( { "message" :: NullOrUndefined (ErrorMessage) } -> {"message" :: NullOrUndefined (ErrorMessage) } ) -> ResourceNotFoundException
-newResourceNotFoundException'  customize = (ResourceNotFoundException <<< customize) { "message": (NullOrUndefined Nothing) }
+newResourceNotFoundException' :: ( { "message" :: Maybe (ErrorMessage) } -> {"message" :: Maybe (ErrorMessage) } ) -> ResourceNotFoundException
+newResourceNotFoundException'  customize = (ResourceNotFoundException <<< customize) { "message": Nothing }
 
 
 
@@ -1178,11 +1177,11 @@ instance encodeScalarAttributeType :: Encode ScalarAttributeType where encode = 
 
 newtype ScanInput = ScanInput 
   { "TableName" :: (TableName)
-  , "AttributesToGet" :: NullOrUndefined (AttributeNameList)
-  , "Limit" :: NullOrUndefined (PositiveIntegerObject)
-  , "Count" :: NullOrUndefined (BooleanObject)
-  , "ScanFilter" :: NullOrUndefined (FilterConditionMap)
-  , "ExclusiveStartKey" :: NullOrUndefined (Key)
+  , "AttributesToGet" :: Maybe (AttributeNameList)
+  , "Limit" :: Maybe (PositiveIntegerObject)
+  , "Count" :: Maybe (BooleanObject)
+  , "ScanFilter" :: Maybe (FilterConditionMap)
+  , "ExclusiveStartKey" :: Maybe (Key)
   }
 derive instance newtypeScanInput :: Newtype ScanInput _
 derive instance repGenericScanInput :: Generic ScanInput _
@@ -1192,21 +1191,21 @@ instance encodeScanInput :: Encode ScanInput where encode = genericEncode option
 
 -- | Constructs ScanInput from required parameters
 newScanInput :: TableName -> ScanInput
-newScanInput _TableName = ScanInput { "TableName": _TableName, "AttributesToGet": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "ExclusiveStartKey": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "ScanFilter": (NullOrUndefined Nothing) }
+newScanInput _TableName = ScanInput { "TableName": _TableName, "AttributesToGet": Nothing, "Count": Nothing, "ExclusiveStartKey": Nothing, "Limit": Nothing, "ScanFilter": Nothing }
 
 -- | Constructs ScanInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newScanInput' :: TableName -> ( { "TableName" :: (TableName) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "Limit" :: NullOrUndefined (PositiveIntegerObject) , "Count" :: NullOrUndefined (BooleanObject) , "ScanFilter" :: NullOrUndefined (FilterConditionMap) , "ExclusiveStartKey" :: NullOrUndefined (Key) } -> {"TableName" :: (TableName) , "AttributesToGet" :: NullOrUndefined (AttributeNameList) , "Limit" :: NullOrUndefined (PositiveIntegerObject) , "Count" :: NullOrUndefined (BooleanObject) , "ScanFilter" :: NullOrUndefined (FilterConditionMap) , "ExclusiveStartKey" :: NullOrUndefined (Key) } ) -> ScanInput
-newScanInput' _TableName customize = (ScanInput <<< customize) { "TableName": _TableName, "AttributesToGet": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "ExclusiveStartKey": (NullOrUndefined Nothing), "Limit": (NullOrUndefined Nothing), "ScanFilter": (NullOrUndefined Nothing) }
+newScanInput' :: TableName -> ( { "TableName" :: (TableName) , "AttributesToGet" :: Maybe (AttributeNameList) , "Limit" :: Maybe (PositiveIntegerObject) , "Count" :: Maybe (BooleanObject) , "ScanFilter" :: Maybe (FilterConditionMap) , "ExclusiveStartKey" :: Maybe (Key) } -> {"TableName" :: (TableName) , "AttributesToGet" :: Maybe (AttributeNameList) , "Limit" :: Maybe (PositiveIntegerObject) , "Count" :: Maybe (BooleanObject) , "ScanFilter" :: Maybe (FilterConditionMap) , "ExclusiveStartKey" :: Maybe (Key) } ) -> ScanInput
+newScanInput' _TableName customize = (ScanInput <<< customize) { "TableName": _TableName, "AttributesToGet": Nothing, "Count": Nothing, "ExclusiveStartKey": Nothing, "Limit": Nothing, "ScanFilter": Nothing }
 
 
 
 newtype ScanOutput = ScanOutput 
-  { "Items" :: NullOrUndefined (ItemList)
-  , "Count" :: NullOrUndefined (Int)
-  , "ScannedCount" :: NullOrUndefined (Int)
-  , "LastEvaluatedKey" :: NullOrUndefined (Key)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Items" :: Maybe (ItemList)
+  , "Count" :: Maybe (Int)
+  , "ScannedCount" :: Maybe (Int)
+  , "LastEvaluatedKey" :: Maybe (Key)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeScanOutput :: Newtype ScanOutput _
 derive instance repGenericScanOutput :: Generic ScanOutput _
@@ -1216,12 +1215,12 @@ instance encodeScanOutput :: Encode ScanOutput where encode = genericEncode opti
 
 -- | Constructs ScanOutput from required parameters
 newScanOutput :: ScanOutput
-newScanOutput  = ScanOutput { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "Items": (NullOrUndefined Nothing), "LastEvaluatedKey": (NullOrUndefined Nothing), "ScannedCount": (NullOrUndefined Nothing) }
+newScanOutput  = ScanOutput { "ConsumedCapacityUnits": Nothing, "Count": Nothing, "Items": Nothing, "LastEvaluatedKey": Nothing, "ScannedCount": Nothing }
 
 -- | Constructs ScanOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newScanOutput' :: ( { "Items" :: NullOrUndefined (ItemList) , "Count" :: NullOrUndefined (Int) , "ScannedCount" :: NullOrUndefined (Int) , "LastEvaluatedKey" :: NullOrUndefined (Key) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Items" :: NullOrUndefined (ItemList) , "Count" :: NullOrUndefined (Int) , "ScannedCount" :: NullOrUndefined (Int) , "LastEvaluatedKey" :: NullOrUndefined (Key) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> ScanOutput
-newScanOutput'  customize = (ScanOutput <<< customize) { "ConsumedCapacityUnits": (NullOrUndefined Nothing), "Count": (NullOrUndefined Nothing), "Items": (NullOrUndefined Nothing), "LastEvaluatedKey": (NullOrUndefined Nothing), "ScannedCount": (NullOrUndefined Nothing) }
+newScanOutput' :: ( { "Items" :: Maybe (ItemList) , "Count" :: Maybe (Int) , "ScannedCount" :: Maybe (Int) , "LastEvaluatedKey" :: Maybe (Key) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Items" :: Maybe (ItemList) , "Count" :: Maybe (Int) , "ScannedCount" :: Maybe (Int) , "LastEvaluatedKey" :: Maybe (Key) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> ScanOutput
+newScanOutput'  customize = (ScanOutput <<< customize) { "ConsumedCapacityUnits": Nothing, "Count": Nothing, "Items": Nothing, "LastEvaluatedKey": Nothing, "ScannedCount": Nothing }
 
 
 
@@ -1244,13 +1243,13 @@ instance encodeStringSetAttributeValue :: Encode StringSetAttributeValue where e
 
 
 newtype TableDescription = TableDescription 
-  { "TableName" :: NullOrUndefined (TableName)
-  , "KeySchema" :: NullOrUndefined (KeySchema)
-  , "TableStatus" :: NullOrUndefined (TableStatus)
-  , "CreationDateTime" :: NullOrUndefined (Date)
-  , "ProvisionedThroughput" :: NullOrUndefined (ProvisionedThroughputDescription)
-  , "TableSizeBytes" :: NullOrUndefined (Number)
-  , "ItemCount" :: NullOrUndefined (Number)
+  { "TableName" :: Maybe (TableName)
+  , "KeySchema" :: Maybe (KeySchema)
+  , "TableStatus" :: Maybe (TableStatus)
+  , "CreationDateTime" :: Maybe (Date)
+  , "ProvisionedThroughput" :: Maybe (ProvisionedThroughputDescription)
+  , "TableSizeBytes" :: Maybe (Number)
+  , "ItemCount" :: Maybe (Number)
   }
 derive instance newtypeTableDescription :: Newtype TableDescription _
 derive instance repGenericTableDescription :: Generic TableDescription _
@@ -1260,12 +1259,12 @@ instance encodeTableDescription :: Encode TableDescription where encode = generi
 
 -- | Constructs TableDescription from required parameters
 newTableDescription :: TableDescription
-newTableDescription  = TableDescription { "CreationDateTime": (NullOrUndefined Nothing), "ItemCount": (NullOrUndefined Nothing), "KeySchema": (NullOrUndefined Nothing), "ProvisionedThroughput": (NullOrUndefined Nothing), "TableName": (NullOrUndefined Nothing), "TableSizeBytes": (NullOrUndefined Nothing), "TableStatus": (NullOrUndefined Nothing) }
+newTableDescription  = TableDescription { "CreationDateTime": Nothing, "ItemCount": Nothing, "KeySchema": Nothing, "ProvisionedThroughput": Nothing, "TableName": Nothing, "TableSizeBytes": Nothing, "TableStatus": Nothing }
 
 -- | Constructs TableDescription's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTableDescription' :: ( { "TableName" :: NullOrUndefined (TableName) , "KeySchema" :: NullOrUndefined (KeySchema) , "TableStatus" :: NullOrUndefined (TableStatus) , "CreationDateTime" :: NullOrUndefined (Date) , "ProvisionedThroughput" :: NullOrUndefined (ProvisionedThroughputDescription) , "TableSizeBytes" :: NullOrUndefined (Number) , "ItemCount" :: NullOrUndefined (Number) } -> {"TableName" :: NullOrUndefined (TableName) , "KeySchema" :: NullOrUndefined (KeySchema) , "TableStatus" :: NullOrUndefined (TableStatus) , "CreationDateTime" :: NullOrUndefined (Date) , "ProvisionedThroughput" :: NullOrUndefined (ProvisionedThroughputDescription) , "TableSizeBytes" :: NullOrUndefined (Number) , "ItemCount" :: NullOrUndefined (Number) } ) -> TableDescription
-newTableDescription'  customize = (TableDescription <<< customize) { "CreationDateTime": (NullOrUndefined Nothing), "ItemCount": (NullOrUndefined Nothing), "KeySchema": (NullOrUndefined Nothing), "ProvisionedThroughput": (NullOrUndefined Nothing), "TableName": (NullOrUndefined Nothing), "TableSizeBytes": (NullOrUndefined Nothing), "TableStatus": (NullOrUndefined Nothing) }
+newTableDescription' :: ( { "TableName" :: Maybe (TableName) , "KeySchema" :: Maybe (KeySchema) , "TableStatus" :: Maybe (TableStatus) , "CreationDateTime" :: Maybe (Date) , "ProvisionedThroughput" :: Maybe (ProvisionedThroughputDescription) , "TableSizeBytes" :: Maybe (Number) , "ItemCount" :: Maybe (Number) } -> {"TableName" :: Maybe (TableName) , "KeySchema" :: Maybe (KeySchema) , "TableStatus" :: Maybe (TableStatus) , "CreationDateTime" :: Maybe (Date) , "ProvisionedThroughput" :: Maybe (ProvisionedThroughputDescription) , "TableSizeBytes" :: Maybe (Number) , "ItemCount" :: Maybe (Number) } ) -> TableDescription
+newTableDescription'  customize = (TableDescription <<< customize) { "CreationDateTime": Nothing, "ItemCount": Nothing, "KeySchema": Nothing, "ProvisionedThroughput": Nothing, "TableName": Nothing, "TableSizeBytes": Nothing, "TableStatus": Nothing }
 
 
 
@@ -1300,8 +1299,8 @@ newtype UpdateItemInput = UpdateItemInput
   { "TableName" :: (TableName)
   , "Key" :: (Key)
   , "AttributeUpdates" :: (AttributeUpdates)
-  , "Expected" :: NullOrUndefined (ExpectedAttributeMap)
-  , "ReturnValues" :: NullOrUndefined (ReturnValue)
+  , "Expected" :: Maybe (ExpectedAttributeMap)
+  , "ReturnValues" :: Maybe (ReturnValue)
   }
 derive instance newtypeUpdateItemInput :: Newtype UpdateItemInput _
 derive instance repGenericUpdateItemInput :: Generic UpdateItemInput _
@@ -1311,18 +1310,18 @@ instance encodeUpdateItemInput :: Encode UpdateItemInput where encode = genericE
 
 -- | Constructs UpdateItemInput from required parameters
 newUpdateItemInput :: AttributeUpdates -> Key -> TableName -> UpdateItemInput
-newUpdateItemInput _AttributeUpdates _Key _TableName = UpdateItemInput { "AttributeUpdates": _AttributeUpdates, "Key": _Key, "TableName": _TableName, "Expected": (NullOrUndefined Nothing), "ReturnValues": (NullOrUndefined Nothing) }
+newUpdateItemInput _AttributeUpdates _Key _TableName = UpdateItemInput { "AttributeUpdates": _AttributeUpdates, "Key": _Key, "TableName": _TableName, "Expected": Nothing, "ReturnValues": Nothing }
 
 -- | Constructs UpdateItemInput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateItemInput' :: AttributeUpdates -> Key -> TableName -> ( { "TableName" :: (TableName) , "Key" :: (Key) , "AttributeUpdates" :: (AttributeUpdates) , "Expected" :: NullOrUndefined (ExpectedAttributeMap) , "ReturnValues" :: NullOrUndefined (ReturnValue) } -> {"TableName" :: (TableName) , "Key" :: (Key) , "AttributeUpdates" :: (AttributeUpdates) , "Expected" :: NullOrUndefined (ExpectedAttributeMap) , "ReturnValues" :: NullOrUndefined (ReturnValue) } ) -> UpdateItemInput
-newUpdateItemInput' _AttributeUpdates _Key _TableName customize = (UpdateItemInput <<< customize) { "AttributeUpdates": _AttributeUpdates, "Key": _Key, "TableName": _TableName, "Expected": (NullOrUndefined Nothing), "ReturnValues": (NullOrUndefined Nothing) }
+newUpdateItemInput' :: AttributeUpdates -> Key -> TableName -> ( { "TableName" :: (TableName) , "Key" :: (Key) , "AttributeUpdates" :: (AttributeUpdates) , "Expected" :: Maybe (ExpectedAttributeMap) , "ReturnValues" :: Maybe (ReturnValue) } -> {"TableName" :: (TableName) , "Key" :: (Key) , "AttributeUpdates" :: (AttributeUpdates) , "Expected" :: Maybe (ExpectedAttributeMap) , "ReturnValues" :: Maybe (ReturnValue) } ) -> UpdateItemInput
+newUpdateItemInput' _AttributeUpdates _Key _TableName customize = (UpdateItemInput <<< customize) { "AttributeUpdates": _AttributeUpdates, "Key": _Key, "TableName": _TableName, "Expected": Nothing, "ReturnValues": Nothing }
 
 
 
 newtype UpdateItemOutput = UpdateItemOutput 
-  { "Attributes" :: NullOrUndefined (AttributeMap)
-  , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits)
+  { "Attributes" :: Maybe (AttributeMap)
+  , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits)
   }
 derive instance newtypeUpdateItemOutput :: Newtype UpdateItemOutput _
 derive instance repGenericUpdateItemOutput :: Generic UpdateItemOutput _
@@ -1332,12 +1331,12 @@ instance encodeUpdateItemOutput :: Encode UpdateItemOutput where encode = generi
 
 -- | Constructs UpdateItemOutput from required parameters
 newUpdateItemOutput :: UpdateItemOutput
-newUpdateItemOutput  = UpdateItemOutput { "Attributes": (NullOrUndefined Nothing), "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newUpdateItemOutput  = UpdateItemOutput { "Attributes": Nothing, "ConsumedCapacityUnits": Nothing }
 
 -- | Constructs UpdateItemOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateItemOutput' :: ( { "Attributes" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> {"Attributes" :: NullOrUndefined (AttributeMap) , "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } ) -> UpdateItemOutput
-newUpdateItemOutput'  customize = (UpdateItemOutput <<< customize) { "Attributes": (NullOrUndefined Nothing), "ConsumedCapacityUnits": (NullOrUndefined Nothing) }
+newUpdateItemOutput' :: ( { "Attributes" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> {"Attributes" :: Maybe (AttributeMap) , "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } ) -> UpdateItemOutput
+newUpdateItemOutput'  customize = (UpdateItemOutput <<< customize) { "Attributes": Nothing, "ConsumedCapacityUnits": Nothing }
 
 
 
@@ -1363,7 +1362,7 @@ newUpdateTableInput' _ProvisionedThroughput _TableName customize = (UpdateTableI
 
 
 newtype UpdateTableOutput = UpdateTableOutput 
-  { "TableDescription" :: NullOrUndefined (TableDescription)
+  { "TableDescription" :: Maybe (TableDescription)
   }
 derive instance newtypeUpdateTableOutput :: Newtype UpdateTableOutput _
 derive instance repGenericUpdateTableOutput :: Generic UpdateTableOutput _
@@ -1373,19 +1372,19 @@ instance encodeUpdateTableOutput :: Encode UpdateTableOutput where encode = gene
 
 -- | Constructs UpdateTableOutput from required parameters
 newUpdateTableOutput :: UpdateTableOutput
-newUpdateTableOutput  = UpdateTableOutput { "TableDescription": (NullOrUndefined Nothing) }
+newUpdateTableOutput  = UpdateTableOutput { "TableDescription": Nothing }
 
 -- | Constructs UpdateTableOutput's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateTableOutput' :: ( { "TableDescription" :: NullOrUndefined (TableDescription) } -> {"TableDescription" :: NullOrUndefined (TableDescription) } ) -> UpdateTableOutput
-newUpdateTableOutput'  customize = (UpdateTableOutput <<< customize) { "TableDescription": (NullOrUndefined Nothing) }
+newUpdateTableOutput' :: ( { "TableDescription" :: Maybe (TableDescription) } -> {"TableDescription" :: Maybe (TableDescription) } ) -> UpdateTableOutput
+newUpdateTableOutput'  customize = (UpdateTableOutput <<< customize) { "TableDescription": Nothing }
 
 
 
 -- | <p>This structure is a Union of PutRequest and DeleteRequest. It can contain exactly one of <code>PutRequest</code> or <code>DeleteRequest</code>. Never Both. This is enforced in the code.</p>
 newtype WriteRequest = WriteRequest 
-  { "PutRequest" :: NullOrUndefined (PutRequest)
-  , "DeleteRequest" :: NullOrUndefined (DeleteRequest)
+  { "PutRequest" :: Maybe (PutRequest)
+  , "DeleteRequest" :: Maybe (DeleteRequest)
   }
 derive instance newtypeWriteRequest :: Newtype WriteRequest _
 derive instance repGenericWriteRequest :: Generic WriteRequest _
@@ -1395,12 +1394,12 @@ instance encodeWriteRequest :: Encode WriteRequest where encode = genericEncode 
 
 -- | Constructs WriteRequest from required parameters
 newWriteRequest :: WriteRequest
-newWriteRequest  = WriteRequest { "DeleteRequest": (NullOrUndefined Nothing), "PutRequest": (NullOrUndefined Nothing) }
+newWriteRequest  = WriteRequest { "DeleteRequest": Nothing, "PutRequest": Nothing }
 
 -- | Constructs WriteRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newWriteRequest' :: ( { "PutRequest" :: NullOrUndefined (PutRequest) , "DeleteRequest" :: NullOrUndefined (DeleteRequest) } -> {"PutRequest" :: NullOrUndefined (PutRequest) , "DeleteRequest" :: NullOrUndefined (DeleteRequest) } ) -> WriteRequest
-newWriteRequest'  customize = (WriteRequest <<< customize) { "DeleteRequest": (NullOrUndefined Nothing), "PutRequest": (NullOrUndefined Nothing) }
+newWriteRequest' :: ( { "PutRequest" :: Maybe (PutRequest) , "DeleteRequest" :: Maybe (DeleteRequest) } -> {"PutRequest" :: Maybe (PutRequest) , "DeleteRequest" :: Maybe (DeleteRequest) } ) -> WriteRequest
+newWriteRequest'  customize = (WriteRequest <<< customize) { "DeleteRequest": Nothing, "PutRequest": Nothing }
 
 
 

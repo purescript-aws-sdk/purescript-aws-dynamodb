@@ -96,7 +96,7 @@ Encode AttributeUpdates
 
 ``` purescript
 newtype AttributeValue
-  = AttributeValue { "S" :: NullOrUndefined (StringAttributeValue), "N" :: NullOrUndefined (NumberAttributeValue), "B" :: NullOrUndefined (BinaryAttributeValue), "SS" :: NullOrUndefined (StringSetAttributeValue), "NS" :: NullOrUndefined (NumberSetAttributeValue), "BS" :: NullOrUndefined (BinarySetAttributeValue) }
+  = AttributeValue { "S" :: Maybe (StringAttributeValue), "N" :: Maybe (NumberAttributeValue), "B" :: Maybe (BinaryAttributeValue), "SS" :: Maybe (StringSetAttributeValue), "NS" :: Maybe (NumberSetAttributeValue), "BS" :: Maybe (BinarySetAttributeValue) }
 ```
 
 <p>AttributeValue can be <code>String</code>, <code>Number</code>, <code>Binary</code>, <code>StringSet</code>, <code>NumberSet</code>, <code>BinarySet</code>.</p>
@@ -121,7 +121,7 @@ Constructs AttributeValue from required parameters
 #### `newAttributeValue'`
 
 ``` purescript
-newAttributeValue' :: ({ "S" :: NullOrUndefined (StringAttributeValue), "N" :: NullOrUndefined (NumberAttributeValue), "B" :: NullOrUndefined (BinaryAttributeValue), "SS" :: NullOrUndefined (StringSetAttributeValue), "NS" :: NullOrUndefined (NumberSetAttributeValue), "BS" :: NullOrUndefined (BinarySetAttributeValue) } -> { "S" :: NullOrUndefined (StringAttributeValue), "N" :: NullOrUndefined (NumberAttributeValue), "B" :: NullOrUndefined (BinaryAttributeValue), "SS" :: NullOrUndefined (StringSetAttributeValue), "NS" :: NullOrUndefined (NumberSetAttributeValue), "BS" :: NullOrUndefined (BinarySetAttributeValue) }) -> AttributeValue
+newAttributeValue' :: ({ "S" :: Maybe (StringAttributeValue), "N" :: Maybe (NumberAttributeValue), "B" :: Maybe (BinaryAttributeValue), "SS" :: Maybe (StringSetAttributeValue), "NS" :: Maybe (NumberSetAttributeValue), "BS" :: Maybe (BinarySetAttributeValue) } -> { "S" :: Maybe (StringAttributeValue), "N" :: Maybe (NumberAttributeValue), "B" :: Maybe (BinaryAttributeValue), "SS" :: Maybe (StringSetAttributeValue), "NS" :: Maybe (NumberSetAttributeValue), "BS" :: Maybe (BinarySetAttributeValue) }) -> AttributeValue
 ```
 
 Constructs AttributeValue's fields from required parameters
@@ -148,7 +148,7 @@ Encode AttributeValueList
 
 ``` purescript
 newtype AttributeValueUpdate
-  = AttributeValueUpdate { "Value" :: NullOrUndefined (AttributeValue), "Action" :: NullOrUndefined (AttributeAction) }
+  = AttributeValueUpdate { "Value" :: Maybe (AttributeValue), "Action" :: Maybe (AttributeAction) }
 ```
 
 <p>Specifies the attribute to update and how to perform the update. Possible values: <code>PUT</code> (default), <code>ADD</code> or <code>DELETE</code>.</p>
@@ -173,7 +173,7 @@ Constructs AttributeValueUpdate from required parameters
 #### `newAttributeValueUpdate'`
 
 ``` purescript
-newAttributeValueUpdate' :: ({ "Value" :: NullOrUndefined (AttributeValue), "Action" :: NullOrUndefined (AttributeAction) } -> { "Value" :: NullOrUndefined (AttributeValue), "Action" :: NullOrUndefined (AttributeAction) }) -> AttributeValueUpdate
+newAttributeValueUpdate' :: ({ "Value" :: Maybe (AttributeValue), "Action" :: Maybe (AttributeAction) } -> { "Value" :: Maybe (AttributeValue), "Action" :: Maybe (AttributeAction) }) -> AttributeValueUpdate
 ```
 
 Constructs AttributeValueUpdate's fields from required parameters
@@ -214,7 +214,7 @@ Constructs BatchGetItemInput's fields from required parameters
 
 ``` purescript
 newtype BatchGetItemOutput
-  = BatchGetItemOutput { "Responses" :: NullOrUndefined (BatchGetResponseMap), "UnprocessedKeys" :: NullOrUndefined (BatchGetRequestMap) }
+  = BatchGetItemOutput { "Responses" :: Maybe (BatchGetResponseMap), "UnprocessedKeys" :: Maybe (BatchGetRequestMap) }
 ```
 
 ##### Instances
@@ -237,7 +237,7 @@ Constructs BatchGetItemOutput from required parameters
 #### `newBatchGetItemOutput'`
 
 ``` purescript
-newBatchGetItemOutput' :: ({ "Responses" :: NullOrUndefined (BatchGetResponseMap), "UnprocessedKeys" :: NullOrUndefined (BatchGetRequestMap) } -> { "Responses" :: NullOrUndefined (BatchGetResponseMap), "UnprocessedKeys" :: NullOrUndefined (BatchGetRequestMap) }) -> BatchGetItemOutput
+newBatchGetItemOutput' :: ({ "Responses" :: Maybe (BatchGetResponseMap), "UnprocessedKeys" :: Maybe (BatchGetRequestMap) } -> { "Responses" :: Maybe (BatchGetResponseMap), "UnprocessedKeys" :: Maybe (BatchGetRequestMap) }) -> BatchGetItemOutput
 ```
 
 Constructs BatchGetItemOutput's fields from required parameters
@@ -282,7 +282,7 @@ Encode BatchGetResponseMap
 
 ``` purescript
 newtype BatchResponse
-  = BatchResponse { "Items" :: NullOrUndefined (ItemList), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = BatchResponse { "Items" :: Maybe (ItemList), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 <p>The item attributes from a response in a specific table, along with the read resources consumed on the table during the request.</p>
@@ -307,7 +307,7 @@ Constructs BatchResponse from required parameters
 #### `newBatchResponse'`
 
 ``` purescript
-newBatchResponse' :: ({ "Items" :: NullOrUndefined (ItemList), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Items" :: NullOrUndefined (ItemList), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> BatchResponse
+newBatchResponse' :: ({ "Items" :: Maybe (ItemList), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Items" :: Maybe (ItemList), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> BatchResponse
 ```
 
 Constructs BatchResponse's fields from required parameters
@@ -348,7 +348,7 @@ Constructs BatchWriteItemInput's fields from required parameters
 
 ``` purescript
 newtype BatchWriteItemOutput
-  = BatchWriteItemOutput { "Responses" :: NullOrUndefined (BatchWriteResponseMap), "UnprocessedItems" :: NullOrUndefined (BatchWriteItemRequestMap) }
+  = BatchWriteItemOutput { "Responses" :: Maybe (BatchWriteResponseMap), "UnprocessedItems" :: Maybe (BatchWriteItemRequestMap) }
 ```
 
 <p>A container for <code>BatchWriteItem</code> response</p>
@@ -373,7 +373,7 @@ Constructs BatchWriteItemOutput from required parameters
 #### `newBatchWriteItemOutput'`
 
 ``` purescript
-newBatchWriteItemOutput' :: ({ "Responses" :: NullOrUndefined (BatchWriteResponseMap), "UnprocessedItems" :: NullOrUndefined (BatchWriteItemRequestMap) } -> { "Responses" :: NullOrUndefined (BatchWriteResponseMap), "UnprocessedItems" :: NullOrUndefined (BatchWriteItemRequestMap) }) -> BatchWriteItemOutput
+newBatchWriteItemOutput' :: ({ "Responses" :: Maybe (BatchWriteResponseMap), "UnprocessedItems" :: Maybe (BatchWriteItemRequestMap) } -> { "Responses" :: Maybe (BatchWriteResponseMap), "UnprocessedItems" :: Maybe (BatchWriteItemRequestMap) }) -> BatchWriteItemOutput
 ```
 
 Constructs BatchWriteItemOutput's fields from required parameters
@@ -400,7 +400,7 @@ Encode BatchWriteItemRequestMap
 
 ``` purescript
 newtype BatchWriteResponse
-  = BatchWriteResponse { "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = BatchWriteResponse { "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -423,7 +423,7 @@ Constructs BatchWriteResponse from required parameters
 #### `newBatchWriteResponse'`
 
 ``` purescript
-newBatchWriteResponse' :: ({ "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> BatchWriteResponse
+newBatchWriteResponse' :: ({ "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> BatchWriteResponse
 ```
 
 Constructs BatchWriteResponse's fields from required parameters
@@ -514,7 +514,7 @@ Encode ComparisonOperator
 
 ``` purescript
 newtype Condition
-  = Condition { "AttributeValueList" :: NullOrUndefined (AttributeValueList), "ComparisonOperator" :: ComparisonOperator }
+  = Condition { "AttributeValueList" :: Maybe (AttributeValueList), "ComparisonOperator" :: ComparisonOperator }
 ```
 
 ##### Instances
@@ -537,7 +537,7 @@ Constructs Condition from required parameters
 #### `newCondition'`
 
 ``` purescript
-newCondition' :: ComparisonOperator -> ({ "AttributeValueList" :: NullOrUndefined (AttributeValueList), "ComparisonOperator" :: ComparisonOperator } -> { "AttributeValueList" :: NullOrUndefined (AttributeValueList), "ComparisonOperator" :: ComparisonOperator }) -> Condition
+newCondition' :: ComparisonOperator -> ({ "AttributeValueList" :: Maybe (AttributeValueList), "ComparisonOperator" :: ComparisonOperator } -> { "AttributeValueList" :: Maybe (AttributeValueList), "ComparisonOperator" :: ComparisonOperator }) -> Condition
 ```
 
 Constructs Condition's fields from required parameters
@@ -546,7 +546,7 @@ Constructs Condition's fields from required parameters
 
 ``` purescript
 newtype ConditionalCheckFailedException
-  = ConditionalCheckFailedException { message :: NullOrUndefined (ErrorMessage) }
+  = ConditionalCheckFailedException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>This exception is thrown when an expected value does not match what was found in the system.</p>
@@ -571,7 +571,7 @@ Constructs ConditionalCheckFailedException from required parameters
 #### `newConditionalCheckFailedException'`
 
 ``` purescript
-newConditionalCheckFailedException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ConditionalCheckFailedException
+newConditionalCheckFailedException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ConditionalCheckFailedException
 ```
 
 Constructs ConditionalCheckFailedException's fields from required parameters
@@ -648,7 +648,7 @@ Constructs CreateTableInput's fields from required parameters
 
 ``` purescript
 newtype CreateTableOutput
-  = CreateTableOutput { "TableDescription" :: NullOrUndefined (TableDescription) }
+  = CreateTableOutput { "TableDescription" :: Maybe (TableDescription) }
 ```
 
 ##### Instances
@@ -671,7 +671,7 @@ Constructs CreateTableOutput from required parameters
 #### `newCreateTableOutput'`
 
 ``` purescript
-newCreateTableOutput' :: ({ "TableDescription" :: NullOrUndefined (TableDescription) } -> { "TableDescription" :: NullOrUndefined (TableDescription) }) -> CreateTableOutput
+newCreateTableOutput' :: ({ "TableDescription" :: Maybe (TableDescription) } -> { "TableDescription" :: Maybe (TableDescription) }) -> CreateTableOutput
 ```
 
 Constructs CreateTableOutput's fields from required parameters
@@ -696,7 +696,7 @@ Encode Date
 
 ``` purescript
 newtype DeleteItemInput
-  = DeleteItemInput { "TableName" :: TableName, "Key" :: Key, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) }
+  = DeleteItemInput { "TableName" :: TableName, "Key" :: Key, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) }
 ```
 
 ##### Instances
@@ -719,7 +719,7 @@ Constructs DeleteItemInput from required parameters
 #### `newDeleteItemInput'`
 
 ``` purescript
-newDeleteItemInput' :: Key -> TableName -> ({ "TableName" :: TableName, "Key" :: Key, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) } -> { "TableName" :: TableName, "Key" :: Key, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) }) -> DeleteItemInput
+newDeleteItemInput' :: Key -> TableName -> ({ "TableName" :: TableName, "Key" :: Key, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) } -> { "TableName" :: TableName, "Key" :: Key, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) }) -> DeleteItemInput
 ```
 
 Constructs DeleteItemInput's fields from required parameters
@@ -728,7 +728,7 @@ Constructs DeleteItemInput's fields from required parameters
 
 ``` purescript
 newtype DeleteItemOutput
-  = DeleteItemOutput { "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = DeleteItemOutput { "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -751,7 +751,7 @@ Constructs DeleteItemOutput from required parameters
 #### `newDeleteItemOutput'`
 
 ``` purescript
-newDeleteItemOutput' :: ({ "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> DeleteItemOutput
+newDeleteItemOutput' :: ({ "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> DeleteItemOutput
 ```
 
 Constructs DeleteItemOutput's fields from required parameters
@@ -826,7 +826,7 @@ Constructs DeleteTableInput's fields from required parameters
 
 ``` purescript
 newtype DeleteTableOutput
-  = DeleteTableOutput { "TableDescription" :: NullOrUndefined (TableDescription) }
+  = DeleteTableOutput { "TableDescription" :: Maybe (TableDescription) }
 ```
 
 ##### Instances
@@ -849,7 +849,7 @@ Constructs DeleteTableOutput from required parameters
 #### `newDeleteTableOutput'`
 
 ``` purescript
-newDeleteTableOutput' :: ({ "TableDescription" :: NullOrUndefined (TableDescription) } -> { "TableDescription" :: NullOrUndefined (TableDescription) }) -> DeleteTableOutput
+newDeleteTableOutput' :: ({ "TableDescription" :: Maybe (TableDescription) } -> { "TableDescription" :: Maybe (TableDescription) }) -> DeleteTableOutput
 ```
 
 Constructs DeleteTableOutput's fields from required parameters
@@ -890,7 +890,7 @@ Constructs DescribeTableInput's fields from required parameters
 
 ``` purescript
 newtype DescribeTableOutput
-  = DescribeTableOutput { "Table" :: NullOrUndefined (TableDescription) }
+  = DescribeTableOutput { "Table" :: Maybe (TableDescription) }
 ```
 
 ##### Instances
@@ -913,7 +913,7 @@ Constructs DescribeTableOutput from required parameters
 #### `newDescribeTableOutput'`
 
 ``` purescript
-newDescribeTableOutput' :: ({ "Table" :: NullOrUndefined (TableDescription) } -> { "Table" :: NullOrUndefined (TableDescription) }) -> DescribeTableOutput
+newDescribeTableOutput' :: ({ "Table" :: Maybe (TableDescription) } -> { "Table" :: Maybe (TableDescription) }) -> DescribeTableOutput
 ```
 
 Constructs DescribeTableOutput's fields from required parameters
@@ -956,7 +956,7 @@ Encode ExpectedAttributeMap
 
 ``` purescript
 newtype ExpectedAttributeValue
-  = ExpectedAttributeValue { "Value" :: NullOrUndefined (AttributeValue), "Exists" :: NullOrUndefined (BooleanObject) }
+  = ExpectedAttributeValue { "Value" :: Maybe (AttributeValue), "Exists" :: Maybe (BooleanObject) }
 ```
 
 <p>Allows you to provide an attribute name, and whether or not Amazon DynamoDB should check to see if the attribute value already exists; or if the attribute value exists and has a particular value before changing it.</p>
@@ -981,7 +981,7 @@ Constructs ExpectedAttributeValue from required parameters
 #### `newExpectedAttributeValue'`
 
 ``` purescript
-newExpectedAttributeValue' :: ({ "Value" :: NullOrUndefined (AttributeValue), "Exists" :: NullOrUndefined (BooleanObject) } -> { "Value" :: NullOrUndefined (AttributeValue), "Exists" :: NullOrUndefined (BooleanObject) }) -> ExpectedAttributeValue
+newExpectedAttributeValue' :: ({ "Value" :: Maybe (AttributeValue), "Exists" :: Maybe (BooleanObject) } -> { "Value" :: Maybe (AttributeValue), "Exists" :: Maybe (BooleanObject) }) -> ExpectedAttributeValue
 ```
 
 Constructs ExpectedAttributeValue's fields from required parameters
@@ -1006,7 +1006,7 @@ Encode FilterConditionMap
 
 ``` purescript
 newtype GetItemInput
-  = GetItemInput { "TableName" :: TableName, "Key" :: Key, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (ConsistentRead) }
+  = GetItemInput { "TableName" :: TableName, "Key" :: Key, "AttributesToGet" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (ConsistentRead) }
 ```
 
 ##### Instances
@@ -1029,7 +1029,7 @@ Constructs GetItemInput from required parameters
 #### `newGetItemInput'`
 
 ``` purescript
-newGetItemInput' :: Key -> TableName -> ({ "TableName" :: TableName, "Key" :: Key, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (ConsistentRead) } -> { "TableName" :: TableName, "Key" :: Key, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (ConsistentRead) }) -> GetItemInput
+newGetItemInput' :: Key -> TableName -> ({ "TableName" :: TableName, "Key" :: Key, "AttributesToGet" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (ConsistentRead) } -> { "TableName" :: TableName, "Key" :: Key, "AttributesToGet" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (ConsistentRead) }) -> GetItemInput
 ```
 
 Constructs GetItemInput's fields from required parameters
@@ -1038,7 +1038,7 @@ Constructs GetItemInput's fields from required parameters
 
 ``` purescript
 newtype GetItemOutput
-  = GetItemOutput { "Item" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = GetItemOutput { "Item" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -1061,7 +1061,7 @@ Constructs GetItemOutput from required parameters
 #### `newGetItemOutput'`
 
 ``` purescript
-newGetItemOutput' :: ({ "Item" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Item" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> GetItemOutput
+newGetItemOutput' :: ({ "Item" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Item" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> GetItemOutput
 ```
 
 Constructs GetItemOutput's fields from required parameters
@@ -1070,7 +1070,7 @@ Constructs GetItemOutput's fields from required parameters
 
 ``` purescript
 newtype InternalServerError
-  = InternalServerError { message :: NullOrUndefined (ErrorMessage) }
+  = InternalServerError { message :: Maybe (ErrorMessage) }
 ```
 
 <p>This exception is thrown when the service has a problem when trying to process the request.</p>
@@ -1095,7 +1095,7 @@ Constructs InternalServerError from required parameters
 #### `newInternalServerError'`
 
 ``` purescript
-newInternalServerError' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> InternalServerError
+newInternalServerError' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> InternalServerError
 ```
 
 Constructs InternalServerError's fields from required parameters
@@ -1120,7 +1120,7 @@ Encode ItemList
 
 ``` purescript
 newtype Key
-  = Key { "HashKeyElement" :: AttributeValue, "RangeKeyElement" :: NullOrUndefined (AttributeValue) }
+  = Key { "HashKeyElement" :: AttributeValue, "RangeKeyElement" :: Maybe (AttributeValue) }
 ```
 
 <p>The primary key that uniquely identifies each item in a table. A primary key can be a one attribute (hash) primary key or a two attribute (hash-and-range) primary key.</p>
@@ -1145,7 +1145,7 @@ Constructs Key from required parameters
 #### `newKey'`
 
 ``` purescript
-newKey' :: AttributeValue -> ({ "HashKeyElement" :: AttributeValue, "RangeKeyElement" :: NullOrUndefined (AttributeValue) } -> { "HashKeyElement" :: AttributeValue, "RangeKeyElement" :: NullOrUndefined (AttributeValue) }) -> Key
+newKey' :: AttributeValue -> ({ "HashKeyElement" :: AttributeValue, "RangeKeyElement" :: Maybe (AttributeValue) } -> { "HashKeyElement" :: AttributeValue, "RangeKeyElement" :: Maybe (AttributeValue) }) -> Key
 ```
 
 Constructs Key's fields from required parameters
@@ -1170,7 +1170,7 @@ Encode KeyList
 
 ``` purescript
 newtype KeySchema
-  = KeySchema { "HashKeyElement" :: KeySchemaElement, "RangeKeyElement" :: NullOrUndefined (KeySchemaElement) }
+  = KeySchema { "HashKeyElement" :: KeySchemaElement, "RangeKeyElement" :: Maybe (KeySchemaElement) }
 ```
 
 <p>The KeySchema identifies the primary key as a one attribute primary key (hash) or a composite two attribute (hash-and-range) primary key. Single attribute primary keys have one index value: a <code>HashKeyElement</code>. A composite hash-and-range primary key contains two attribute values: a <code>HashKeyElement</code> and a <code>RangeKeyElement</code>.</p>
@@ -1195,7 +1195,7 @@ Constructs KeySchema from required parameters
 #### `newKeySchema'`
 
 ``` purescript
-newKeySchema' :: KeySchemaElement -> ({ "HashKeyElement" :: KeySchemaElement, "RangeKeyElement" :: NullOrUndefined (KeySchemaElement) } -> { "HashKeyElement" :: KeySchemaElement, "RangeKeyElement" :: NullOrUndefined (KeySchemaElement) }) -> KeySchema
+newKeySchema' :: KeySchemaElement -> ({ "HashKeyElement" :: KeySchemaElement, "RangeKeyElement" :: Maybe (KeySchemaElement) } -> { "HashKeyElement" :: KeySchemaElement, "RangeKeyElement" :: Maybe (KeySchemaElement) }) -> KeySchema
 ```
 
 Constructs KeySchema's fields from required parameters
@@ -1254,7 +1254,7 @@ Constructs KeySchemaElement's fields from required parameters
 
 ``` purescript
 newtype KeysAndAttributes
-  = KeysAndAttributes { "Keys" :: KeyList, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (ConsistentRead) }
+  = KeysAndAttributes { "Keys" :: KeyList, "AttributesToGet" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (ConsistentRead) }
 ```
 
 ##### Instances
@@ -1277,7 +1277,7 @@ Constructs KeysAndAttributes from required parameters
 #### `newKeysAndAttributes'`
 
 ``` purescript
-newKeysAndAttributes' :: KeyList -> ({ "Keys" :: KeyList, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (ConsistentRead) } -> { "Keys" :: KeyList, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "ConsistentRead" :: NullOrUndefined (ConsistentRead) }) -> KeysAndAttributes
+newKeysAndAttributes' :: KeyList -> ({ "Keys" :: KeyList, "AttributesToGet" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (ConsistentRead) } -> { "Keys" :: KeyList, "AttributesToGet" :: Maybe (AttributeNameList), "ConsistentRead" :: Maybe (ConsistentRead) }) -> KeysAndAttributes
 ```
 
 Constructs KeysAndAttributes's fields from required parameters
@@ -1286,7 +1286,7 @@ Constructs KeysAndAttributes's fields from required parameters
 
 ``` purescript
 newtype LimitExceededException
-  = LimitExceededException { message :: NullOrUndefined (ErrorMessage) }
+  = LimitExceededException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>This exception is thrown when the subscriber exceeded the limits on the number of objects or operations.</p>
@@ -1311,7 +1311,7 @@ Constructs LimitExceededException from required parameters
 #### `newLimitExceededException'`
 
 ``` purescript
-newLimitExceededException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> LimitExceededException
+newLimitExceededException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> LimitExceededException
 ```
 
 Constructs LimitExceededException's fields from required parameters
@@ -1320,7 +1320,7 @@ Constructs LimitExceededException's fields from required parameters
 
 ``` purescript
 newtype ListTablesInput
-  = ListTablesInput { "ExclusiveStartTableName" :: NullOrUndefined (TableName), "Limit" :: NullOrUndefined (ListTablesInputLimit) }
+  = ListTablesInput { "ExclusiveStartTableName" :: Maybe (TableName), "Limit" :: Maybe (ListTablesInputLimit) }
 ```
 
 ##### Instances
@@ -1343,7 +1343,7 @@ Constructs ListTablesInput from required parameters
 #### `newListTablesInput'`
 
 ``` purescript
-newListTablesInput' :: ({ "ExclusiveStartTableName" :: NullOrUndefined (TableName), "Limit" :: NullOrUndefined (ListTablesInputLimit) } -> { "ExclusiveStartTableName" :: NullOrUndefined (TableName), "Limit" :: NullOrUndefined (ListTablesInputLimit) }) -> ListTablesInput
+newListTablesInput' :: ({ "ExclusiveStartTableName" :: Maybe (TableName), "Limit" :: Maybe (ListTablesInputLimit) } -> { "ExclusiveStartTableName" :: Maybe (TableName), "Limit" :: Maybe (ListTablesInputLimit) }) -> ListTablesInput
 ```
 
 Constructs ListTablesInput's fields from required parameters
@@ -1370,7 +1370,7 @@ Encode ListTablesInputLimit
 
 ``` purescript
 newtype ListTablesOutput
-  = ListTablesOutput { "TableNames" :: NullOrUndefined (TableNameList), "LastEvaluatedTableName" :: NullOrUndefined (TableName) }
+  = ListTablesOutput { "TableNames" :: Maybe (TableNameList), "LastEvaluatedTableName" :: Maybe (TableName) }
 ```
 
 ##### Instances
@@ -1393,7 +1393,7 @@ Constructs ListTablesOutput from required parameters
 #### `newListTablesOutput'`
 
 ``` purescript
-newListTablesOutput' :: ({ "TableNames" :: NullOrUndefined (TableNameList), "LastEvaluatedTableName" :: NullOrUndefined (TableName) } -> { "TableNames" :: NullOrUndefined (TableNameList), "LastEvaluatedTableName" :: NullOrUndefined (TableName) }) -> ListTablesOutput
+newListTablesOutput' :: ({ "TableNames" :: Maybe (TableNameList), "LastEvaluatedTableName" :: Maybe (TableName) } -> { "TableNames" :: Maybe (TableNameList), "LastEvaluatedTableName" :: Maybe (TableName) }) -> ListTablesOutput
 ```
 
 Constructs ListTablesOutput's fields from required parameters
@@ -1500,7 +1500,7 @@ Constructs ProvisionedThroughput's fields from required parameters
 
 ``` purescript
 newtype ProvisionedThroughputDescription
-  = ProvisionedThroughputDescription { "LastIncreaseDateTime" :: NullOrUndefined (Date), "LastDecreaseDateTime" :: NullOrUndefined (Date), "NumberOfDecreasesToday" :: NullOrUndefined (PositiveLongObject), "ReadCapacityUnits" :: NullOrUndefined (PositiveLongObject), "WriteCapacityUnits" :: NullOrUndefined (PositiveLongObject) }
+  = ProvisionedThroughputDescription { "LastIncreaseDateTime" :: Maybe (Date), "LastDecreaseDateTime" :: Maybe (Date), "NumberOfDecreasesToday" :: Maybe (PositiveLongObject), "ReadCapacityUnits" :: Maybe (PositiveLongObject), "WriteCapacityUnits" :: Maybe (PositiveLongObject) }
 ```
 
 ##### Instances
@@ -1523,7 +1523,7 @@ Constructs ProvisionedThroughputDescription from required parameters
 #### `newProvisionedThroughputDescription'`
 
 ``` purescript
-newProvisionedThroughputDescription' :: ({ "LastIncreaseDateTime" :: NullOrUndefined (Date), "LastDecreaseDateTime" :: NullOrUndefined (Date), "NumberOfDecreasesToday" :: NullOrUndefined (PositiveLongObject), "ReadCapacityUnits" :: NullOrUndefined (PositiveLongObject), "WriteCapacityUnits" :: NullOrUndefined (PositiveLongObject) } -> { "LastIncreaseDateTime" :: NullOrUndefined (Date), "LastDecreaseDateTime" :: NullOrUndefined (Date), "NumberOfDecreasesToday" :: NullOrUndefined (PositiveLongObject), "ReadCapacityUnits" :: NullOrUndefined (PositiveLongObject), "WriteCapacityUnits" :: NullOrUndefined (PositiveLongObject) }) -> ProvisionedThroughputDescription
+newProvisionedThroughputDescription' :: ({ "LastIncreaseDateTime" :: Maybe (Date), "LastDecreaseDateTime" :: Maybe (Date), "NumberOfDecreasesToday" :: Maybe (PositiveLongObject), "ReadCapacityUnits" :: Maybe (PositiveLongObject), "WriteCapacityUnits" :: Maybe (PositiveLongObject) } -> { "LastIncreaseDateTime" :: Maybe (Date), "LastDecreaseDateTime" :: Maybe (Date), "NumberOfDecreasesToday" :: Maybe (PositiveLongObject), "ReadCapacityUnits" :: Maybe (PositiveLongObject), "WriteCapacityUnits" :: Maybe (PositiveLongObject) }) -> ProvisionedThroughputDescription
 ```
 
 Constructs ProvisionedThroughputDescription's fields from required parameters
@@ -1532,7 +1532,7 @@ Constructs ProvisionedThroughputDescription's fields from required parameters
 
 ``` purescript
 newtype ProvisionedThroughputExceededException
-  = ProvisionedThroughputExceededException { message :: NullOrUndefined (ErrorMessage) }
+  = ProvisionedThroughputExceededException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>This exception is thrown when the level of provisioned throughput defined for the table is exceeded.</p>
@@ -1557,7 +1557,7 @@ Constructs ProvisionedThroughputExceededException from required parameters
 #### `newProvisionedThroughputExceededException'`
 
 ``` purescript
-newProvisionedThroughputExceededException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ProvisionedThroughputExceededException
+newProvisionedThroughputExceededException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ProvisionedThroughputExceededException
 ```
 
 Constructs ProvisionedThroughputExceededException's fields from required parameters
@@ -1566,7 +1566,7 @@ Constructs ProvisionedThroughputExceededException's fields from required paramet
 
 ``` purescript
 newtype PutItemInput
-  = PutItemInput { "TableName" :: TableName, "Item" :: PutItemInputAttributeMap, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) }
+  = PutItemInput { "TableName" :: TableName, "Item" :: PutItemInputAttributeMap, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) }
 ```
 
 ##### Instances
@@ -1589,7 +1589,7 @@ Constructs PutItemInput from required parameters
 #### `newPutItemInput'`
 
 ``` purescript
-newPutItemInput' :: PutItemInputAttributeMap -> TableName -> ({ "TableName" :: TableName, "Item" :: PutItemInputAttributeMap, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) } -> { "TableName" :: TableName, "Item" :: PutItemInputAttributeMap, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) }) -> PutItemInput
+newPutItemInput' :: PutItemInputAttributeMap -> TableName -> ({ "TableName" :: TableName, "Item" :: PutItemInputAttributeMap, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) } -> { "TableName" :: TableName, "Item" :: PutItemInputAttributeMap, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) }) -> PutItemInput
 ```
 
 Constructs PutItemInput's fields from required parameters
@@ -1616,7 +1616,7 @@ Encode PutItemInputAttributeMap
 
 ``` purescript
 newtype PutItemOutput
-  = PutItemOutput { "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = PutItemOutput { "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -1639,7 +1639,7 @@ Constructs PutItemOutput from required parameters
 #### `newPutItemOutput'`
 
 ``` purescript
-newPutItemOutput' :: ({ "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> PutItemOutput
+newPutItemOutput' :: ({ "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> PutItemOutput
 ```
 
 Constructs PutItemOutput's fields from required parameters
@@ -1682,7 +1682,7 @@ Constructs PutRequest's fields from required parameters
 
 ``` purescript
 newtype QueryInput
-  = QueryInput { "TableName" :: TableName, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "Limit" :: NullOrUndefined (PositiveIntegerObject), "ConsistentRead" :: NullOrUndefined (ConsistentRead), "Count" :: NullOrUndefined (BooleanObject), "HashKeyValue" :: AttributeValue, "RangeKeyCondition" :: NullOrUndefined (Condition), "ScanIndexForward" :: NullOrUndefined (BooleanObject), "ExclusiveStartKey" :: NullOrUndefined (Key) }
+  = QueryInput { "TableName" :: TableName, "AttributesToGet" :: Maybe (AttributeNameList), "Limit" :: Maybe (PositiveIntegerObject), "ConsistentRead" :: Maybe (ConsistentRead), "Count" :: Maybe (BooleanObject), "HashKeyValue" :: AttributeValue, "RangeKeyCondition" :: Maybe (Condition), "ScanIndexForward" :: Maybe (BooleanObject), "ExclusiveStartKey" :: Maybe (Key) }
 ```
 
 ##### Instances
@@ -1705,7 +1705,7 @@ Constructs QueryInput from required parameters
 #### `newQueryInput'`
 
 ``` purescript
-newQueryInput' :: AttributeValue -> TableName -> ({ "TableName" :: TableName, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "Limit" :: NullOrUndefined (PositiveIntegerObject), "ConsistentRead" :: NullOrUndefined (ConsistentRead), "Count" :: NullOrUndefined (BooleanObject), "HashKeyValue" :: AttributeValue, "RangeKeyCondition" :: NullOrUndefined (Condition), "ScanIndexForward" :: NullOrUndefined (BooleanObject), "ExclusiveStartKey" :: NullOrUndefined (Key) } -> { "TableName" :: TableName, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "Limit" :: NullOrUndefined (PositiveIntegerObject), "ConsistentRead" :: NullOrUndefined (ConsistentRead), "Count" :: NullOrUndefined (BooleanObject), "HashKeyValue" :: AttributeValue, "RangeKeyCondition" :: NullOrUndefined (Condition), "ScanIndexForward" :: NullOrUndefined (BooleanObject), "ExclusiveStartKey" :: NullOrUndefined (Key) }) -> QueryInput
+newQueryInput' :: AttributeValue -> TableName -> ({ "TableName" :: TableName, "AttributesToGet" :: Maybe (AttributeNameList), "Limit" :: Maybe (PositiveIntegerObject), "ConsistentRead" :: Maybe (ConsistentRead), "Count" :: Maybe (BooleanObject), "HashKeyValue" :: AttributeValue, "RangeKeyCondition" :: Maybe (Condition), "ScanIndexForward" :: Maybe (BooleanObject), "ExclusiveStartKey" :: Maybe (Key) } -> { "TableName" :: TableName, "AttributesToGet" :: Maybe (AttributeNameList), "Limit" :: Maybe (PositiveIntegerObject), "ConsistentRead" :: Maybe (ConsistentRead), "Count" :: Maybe (BooleanObject), "HashKeyValue" :: AttributeValue, "RangeKeyCondition" :: Maybe (Condition), "ScanIndexForward" :: Maybe (BooleanObject), "ExclusiveStartKey" :: Maybe (Key) }) -> QueryInput
 ```
 
 Constructs QueryInput's fields from required parameters
@@ -1714,7 +1714,7 @@ Constructs QueryInput's fields from required parameters
 
 ``` purescript
 newtype QueryOutput
-  = QueryOutput { "Items" :: NullOrUndefined (ItemList), "Count" :: NullOrUndefined (Int), "LastEvaluatedKey" :: NullOrUndefined (Key), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = QueryOutput { "Items" :: Maybe (ItemList), "Count" :: Maybe (Int), "LastEvaluatedKey" :: Maybe (Key), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -1737,7 +1737,7 @@ Constructs QueryOutput from required parameters
 #### `newQueryOutput'`
 
 ``` purescript
-newQueryOutput' :: ({ "Items" :: NullOrUndefined (ItemList), "Count" :: NullOrUndefined (Int), "LastEvaluatedKey" :: NullOrUndefined (Key), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Items" :: NullOrUndefined (ItemList), "Count" :: NullOrUndefined (Int), "LastEvaluatedKey" :: NullOrUndefined (Key), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> QueryOutput
+newQueryOutput' :: ({ "Items" :: Maybe (ItemList), "Count" :: Maybe (Int), "LastEvaluatedKey" :: Maybe (Key), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Items" :: Maybe (ItemList), "Count" :: Maybe (Int), "LastEvaluatedKey" :: Maybe (Key), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> QueryOutput
 ```
 
 Constructs QueryOutput's fields from required parameters
@@ -1746,7 +1746,7 @@ Constructs QueryOutput's fields from required parameters
 
 ``` purescript
 newtype ResourceInUseException
-  = ResourceInUseException { message :: NullOrUndefined (ErrorMessage) }
+  = ResourceInUseException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>This exception is thrown when the resource which is being attempted to be changed is in use.</p>
@@ -1771,7 +1771,7 @@ Constructs ResourceInUseException from required parameters
 #### `newResourceInUseException'`
 
 ``` purescript
-newResourceInUseException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ResourceInUseException
+newResourceInUseException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ResourceInUseException
 ```
 
 Constructs ResourceInUseException's fields from required parameters
@@ -1780,7 +1780,7 @@ Constructs ResourceInUseException's fields from required parameters
 
 ``` purescript
 newtype ResourceNotFoundException
-  = ResourceNotFoundException { message :: NullOrUndefined (ErrorMessage) }
+  = ResourceNotFoundException { message :: Maybe (ErrorMessage) }
 ```
 
 <p>This exception is thrown when the resource which is being attempted to be changed is in use.</p>
@@ -1805,7 +1805,7 @@ Constructs ResourceNotFoundException from required parameters
 #### `newResourceNotFoundException'`
 
 ``` purescript
-newResourceNotFoundException' :: ({ message :: NullOrUndefined (ErrorMessage) } -> { message :: NullOrUndefined (ErrorMessage) }) -> ResourceNotFoundException
+newResourceNotFoundException' :: ({ message :: Maybe (ErrorMessage) } -> { message :: Maybe (ErrorMessage) }) -> ResourceNotFoundException
 ```
 
 Constructs ResourceNotFoundException's fields from required parameters
@@ -1848,7 +1848,7 @@ Encode ScalarAttributeType
 
 ``` purescript
 newtype ScanInput
-  = ScanInput { "TableName" :: TableName, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "Limit" :: NullOrUndefined (PositiveIntegerObject), "Count" :: NullOrUndefined (BooleanObject), "ScanFilter" :: NullOrUndefined (FilterConditionMap), "ExclusiveStartKey" :: NullOrUndefined (Key) }
+  = ScanInput { "TableName" :: TableName, "AttributesToGet" :: Maybe (AttributeNameList), "Limit" :: Maybe (PositiveIntegerObject), "Count" :: Maybe (BooleanObject), "ScanFilter" :: Maybe (FilterConditionMap), "ExclusiveStartKey" :: Maybe (Key) }
 ```
 
 ##### Instances
@@ -1871,7 +1871,7 @@ Constructs ScanInput from required parameters
 #### `newScanInput'`
 
 ``` purescript
-newScanInput' :: TableName -> ({ "TableName" :: TableName, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "Limit" :: NullOrUndefined (PositiveIntegerObject), "Count" :: NullOrUndefined (BooleanObject), "ScanFilter" :: NullOrUndefined (FilterConditionMap), "ExclusiveStartKey" :: NullOrUndefined (Key) } -> { "TableName" :: TableName, "AttributesToGet" :: NullOrUndefined (AttributeNameList), "Limit" :: NullOrUndefined (PositiveIntegerObject), "Count" :: NullOrUndefined (BooleanObject), "ScanFilter" :: NullOrUndefined (FilterConditionMap), "ExclusiveStartKey" :: NullOrUndefined (Key) }) -> ScanInput
+newScanInput' :: TableName -> ({ "TableName" :: TableName, "AttributesToGet" :: Maybe (AttributeNameList), "Limit" :: Maybe (PositiveIntegerObject), "Count" :: Maybe (BooleanObject), "ScanFilter" :: Maybe (FilterConditionMap), "ExclusiveStartKey" :: Maybe (Key) } -> { "TableName" :: TableName, "AttributesToGet" :: Maybe (AttributeNameList), "Limit" :: Maybe (PositiveIntegerObject), "Count" :: Maybe (BooleanObject), "ScanFilter" :: Maybe (FilterConditionMap), "ExclusiveStartKey" :: Maybe (Key) }) -> ScanInput
 ```
 
 Constructs ScanInput's fields from required parameters
@@ -1880,7 +1880,7 @@ Constructs ScanInput's fields from required parameters
 
 ``` purescript
 newtype ScanOutput
-  = ScanOutput { "Items" :: NullOrUndefined (ItemList), "Count" :: NullOrUndefined (Int), "ScannedCount" :: NullOrUndefined (Int), "LastEvaluatedKey" :: NullOrUndefined (Key), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = ScanOutput { "Items" :: Maybe (ItemList), "Count" :: Maybe (Int), "ScannedCount" :: Maybe (Int), "LastEvaluatedKey" :: Maybe (Key), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -1903,7 +1903,7 @@ Constructs ScanOutput from required parameters
 #### `newScanOutput'`
 
 ``` purescript
-newScanOutput' :: ({ "Items" :: NullOrUndefined (ItemList), "Count" :: NullOrUndefined (Int), "ScannedCount" :: NullOrUndefined (Int), "LastEvaluatedKey" :: NullOrUndefined (Key), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Items" :: NullOrUndefined (ItemList), "Count" :: NullOrUndefined (Int), "ScannedCount" :: NullOrUndefined (Int), "LastEvaluatedKey" :: NullOrUndefined (Key), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> ScanOutput
+newScanOutput' :: ({ "Items" :: Maybe (ItemList), "Count" :: Maybe (Int), "ScannedCount" :: Maybe (Int), "LastEvaluatedKey" :: Maybe (Key), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Items" :: Maybe (ItemList), "Count" :: Maybe (Int), "ScannedCount" :: Maybe (Int), "LastEvaluatedKey" :: Maybe (Key), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> ScanOutput
 ```
 
 Constructs ScanOutput's fields from required parameters
@@ -1944,7 +1944,7 @@ Encode StringSetAttributeValue
 
 ``` purescript
 newtype TableDescription
-  = TableDescription { "TableName" :: NullOrUndefined (TableName), "KeySchema" :: NullOrUndefined (KeySchema), "TableStatus" :: NullOrUndefined (TableStatus), "CreationDateTime" :: NullOrUndefined (Date), "ProvisionedThroughput" :: NullOrUndefined (ProvisionedThroughputDescription), "TableSizeBytes" :: NullOrUndefined (Number), "ItemCount" :: NullOrUndefined (Number) }
+  = TableDescription { "TableName" :: Maybe (TableName), "KeySchema" :: Maybe (KeySchema), "TableStatus" :: Maybe (TableStatus), "CreationDateTime" :: Maybe (Date), "ProvisionedThroughput" :: Maybe (ProvisionedThroughputDescription), "TableSizeBytes" :: Maybe (Number), "ItemCount" :: Maybe (Number) }
 ```
 
 ##### Instances
@@ -1967,7 +1967,7 @@ Constructs TableDescription from required parameters
 #### `newTableDescription'`
 
 ``` purescript
-newTableDescription' :: ({ "TableName" :: NullOrUndefined (TableName), "KeySchema" :: NullOrUndefined (KeySchema), "TableStatus" :: NullOrUndefined (TableStatus), "CreationDateTime" :: NullOrUndefined (Date), "ProvisionedThroughput" :: NullOrUndefined (ProvisionedThroughputDescription), "TableSizeBytes" :: NullOrUndefined (Number), "ItemCount" :: NullOrUndefined (Number) } -> { "TableName" :: NullOrUndefined (TableName), "KeySchema" :: NullOrUndefined (KeySchema), "TableStatus" :: NullOrUndefined (TableStatus), "CreationDateTime" :: NullOrUndefined (Date), "ProvisionedThroughput" :: NullOrUndefined (ProvisionedThroughputDescription), "TableSizeBytes" :: NullOrUndefined (Number), "ItemCount" :: NullOrUndefined (Number) }) -> TableDescription
+newTableDescription' :: ({ "TableName" :: Maybe (TableName), "KeySchema" :: Maybe (KeySchema), "TableStatus" :: Maybe (TableStatus), "CreationDateTime" :: Maybe (Date), "ProvisionedThroughput" :: Maybe (ProvisionedThroughputDescription), "TableSizeBytes" :: Maybe (Number), "ItemCount" :: Maybe (Number) } -> { "TableName" :: Maybe (TableName), "KeySchema" :: Maybe (KeySchema), "TableStatus" :: Maybe (TableStatus), "CreationDateTime" :: Maybe (Date), "ProvisionedThroughput" :: Maybe (ProvisionedThroughputDescription), "TableSizeBytes" :: Maybe (Number), "ItemCount" :: Maybe (Number) }) -> TableDescription
 ```
 
 Constructs TableDescription's fields from required parameters
@@ -2024,7 +2024,7 @@ Encode TableStatus
 
 ``` purescript
 newtype UpdateItemInput
-  = UpdateItemInput { "TableName" :: TableName, "Key" :: Key, "AttributeUpdates" :: AttributeUpdates, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) }
+  = UpdateItemInput { "TableName" :: TableName, "Key" :: Key, "AttributeUpdates" :: AttributeUpdates, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) }
 ```
 
 ##### Instances
@@ -2047,7 +2047,7 @@ Constructs UpdateItemInput from required parameters
 #### `newUpdateItemInput'`
 
 ``` purescript
-newUpdateItemInput' :: AttributeUpdates -> Key -> TableName -> ({ "TableName" :: TableName, "Key" :: Key, "AttributeUpdates" :: AttributeUpdates, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) } -> { "TableName" :: TableName, "Key" :: Key, "AttributeUpdates" :: AttributeUpdates, "Expected" :: NullOrUndefined (ExpectedAttributeMap), "ReturnValues" :: NullOrUndefined (ReturnValue) }) -> UpdateItemInput
+newUpdateItemInput' :: AttributeUpdates -> Key -> TableName -> ({ "TableName" :: TableName, "Key" :: Key, "AttributeUpdates" :: AttributeUpdates, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) } -> { "TableName" :: TableName, "Key" :: Key, "AttributeUpdates" :: AttributeUpdates, "Expected" :: Maybe (ExpectedAttributeMap), "ReturnValues" :: Maybe (ReturnValue) }) -> UpdateItemInput
 ```
 
 Constructs UpdateItemInput's fields from required parameters
@@ -2056,7 +2056,7 @@ Constructs UpdateItemInput's fields from required parameters
 
 ``` purescript
 newtype UpdateItemOutput
-  = UpdateItemOutput { "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }
+  = UpdateItemOutput { "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }
 ```
 
 ##### Instances
@@ -2079,7 +2079,7 @@ Constructs UpdateItemOutput from required parameters
 #### `newUpdateItemOutput'`
 
 ``` purescript
-newUpdateItemOutput' :: ({ "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) } -> { "Attributes" :: NullOrUndefined (AttributeMap), "ConsumedCapacityUnits" :: NullOrUndefined (ConsumedCapacityUnits) }) -> UpdateItemOutput
+newUpdateItemOutput' :: ({ "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) } -> { "Attributes" :: Maybe (AttributeMap), "ConsumedCapacityUnits" :: Maybe (ConsumedCapacityUnits) }) -> UpdateItemOutput
 ```
 
 Constructs UpdateItemOutput's fields from required parameters
@@ -2120,7 +2120,7 @@ Constructs UpdateTableInput's fields from required parameters
 
 ``` purescript
 newtype UpdateTableOutput
-  = UpdateTableOutput { "TableDescription" :: NullOrUndefined (TableDescription) }
+  = UpdateTableOutput { "TableDescription" :: Maybe (TableDescription) }
 ```
 
 ##### Instances
@@ -2143,7 +2143,7 @@ Constructs UpdateTableOutput from required parameters
 #### `newUpdateTableOutput'`
 
 ``` purescript
-newUpdateTableOutput' :: ({ "TableDescription" :: NullOrUndefined (TableDescription) } -> { "TableDescription" :: NullOrUndefined (TableDescription) }) -> UpdateTableOutput
+newUpdateTableOutput' :: ({ "TableDescription" :: Maybe (TableDescription) } -> { "TableDescription" :: Maybe (TableDescription) }) -> UpdateTableOutput
 ```
 
 Constructs UpdateTableOutput's fields from required parameters
@@ -2152,7 +2152,7 @@ Constructs UpdateTableOutput's fields from required parameters
 
 ``` purescript
 newtype WriteRequest
-  = WriteRequest { "PutRequest" :: NullOrUndefined (PutRequest), "DeleteRequest" :: NullOrUndefined (DeleteRequest) }
+  = WriteRequest { "PutRequest" :: Maybe (PutRequest), "DeleteRequest" :: Maybe (DeleteRequest) }
 ```
 
 <p>This structure is a Union of PutRequest and DeleteRequest. It can contain exactly one of <code>PutRequest</code> or <code>DeleteRequest</code>. Never Both. This is enforced in the code.</p>
@@ -2177,7 +2177,7 @@ Constructs WriteRequest from required parameters
 #### `newWriteRequest'`
 
 ``` purescript
-newWriteRequest' :: ({ "PutRequest" :: NullOrUndefined (PutRequest), "DeleteRequest" :: NullOrUndefined (DeleteRequest) } -> { "PutRequest" :: NullOrUndefined (PutRequest), "DeleteRequest" :: NullOrUndefined (DeleteRequest) }) -> WriteRequest
+newWriteRequest' :: ({ "PutRequest" :: Maybe (PutRequest), "DeleteRequest" :: Maybe (DeleteRequest) } -> { "PutRequest" :: Maybe (PutRequest), "DeleteRequest" :: Maybe (DeleteRequest) }) -> WriteRequest
 ```
 
 Constructs WriteRequest's fields from required parameters
